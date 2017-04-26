@@ -4,8 +4,21 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import ElementUI from 'element-ui'
+import Quasar, * as Everything from 'quasar-framework'
+import moment from 'moment'
+
 import 'element-ui/lib/theme-default/index.css'
 import 'bootstrap/dist/css/bootstrap.css'
+import 'quasar-framework/dist/quasar.mat.standalone.css'
+
+Vue.use(Quasar, {
+  deps: {
+    moment
+  },
+  components: Everything,
+  directives: Everything
+})
+
 
 Vue.use(ElementUI)
 Vue.config.productionTip = false
