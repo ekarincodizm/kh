@@ -5,11 +5,13 @@ import App from './App'
 import router from './router'
 import ElementUI from 'element-ui'
 import Quasar, * as Everything from 'quasar-framework'
+import iView from 'iview';
 import moment from 'moment'
 
 import 'element-ui/lib/theme-default/index.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'quasar-framework/dist/quasar.mat.standalone.css'
+import 'iview/dist/styles/iview.css';    // 使用 CSS
 
 Vue.use(Quasar, {
   deps: {
@@ -19,8 +21,8 @@ Vue.use(Quasar, {
   directives: Everything
 })
 
-
 Vue.use(ElementUI)
+Vue.use(iView);
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

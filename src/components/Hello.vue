@@ -17,6 +17,16 @@
       <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
     </ul>
+      <Table height="200" :columns="columns1" :data="data2"></Table>
+      <Rate v-model="value"></Rate>
+      <Row>
+        <Col span="12">
+            <Date-picker type="date" placeholder="选择日期" style="width: 200px"></Date-picker>
+        </Col>
+        <Col span="12">
+            <Date-picker type="daterange" placement="bottom-end" placeholder="选择日期" style="width: 200px"></Date-picker>
+        </Col>
+    </Row>
       <q-datetime
       v-model="model"
       type="datetime"
@@ -49,7 +59,63 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App',
       visible: false,
-      showTop: true
+      showTop: true,
+      columns1:[
+                    {
+                        title: '姓名',
+                        key: 'name'
+                    },
+                    {
+                        title: '年龄',
+                        key: 'age'
+                    },
+                    {
+                        title: '地址',
+                        key: 'address'
+                    }
+                ],
+      data2: [
+                    {
+                        name: '王小明',
+                        age: 18,
+                        address: '北京市朝阳区芍药居'
+                    },
+                    {
+                        name: '张小刚',
+                        age: 25,
+                        address: '北京市海淀区西二旗'
+                    },
+                    {
+                        name: '李小红',
+                        age: 30,
+                        address: '上海市浦东新区世纪大道'
+                    },
+                    {
+                        name: '周小伟',
+                        age: 26,
+                        address: '深圳市南山区深南大道'
+                    },
+                    {
+                        name: '王小明',
+                        age: 18,
+                        address: '北京市朝阳区芍药居'
+                    },
+                    {
+                        name: '张小刚',
+                        age: 25,
+                        address: '北京市海淀区西二旗'
+                    },
+                    {
+                        name: '李小红',
+                        age: 30,
+                        address: '上海市浦东新区世纪大道'
+                    },
+                    {
+                        name: '周小伟',
+                        age: 26,
+                        address: '深圳市南山区深南大道'
+                    }
+                ]
     }
   },
   components: {
