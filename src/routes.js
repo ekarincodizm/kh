@@ -1,5 +1,5 @@
-// import Login from './components/Login.vue'
-// import Dashboard from './components/Dashboard.vue'
+import Login from './components/Login.vue'
+import Dashboard from './components/Dashboard.vue'
 // import DashboardIndex from './components/modules/dashboard/Index.vue'
 // import NotFound from './components/modules/dashboard/404.vue'
 // import WidgetsIndex from './components/modules/widgets/Index.vue'
@@ -10,8 +10,8 @@
 // import UISliders from './components/modules/ui/Sliders.vue'
 // import UITimeline from './components/modules/ui/Timeline.vue'
 
-const Login = r => require.ensure([], () => r(require('./components/Login.vue')), '/login')
-const Dashboard = r => require.ensure([], () => r(require('./components/Dashboard.vue')), '/aaa')
+// const Login = r => require.ensure([], () => r(require('./components/Login.vue')), '/login')
+// const Dashboard = r => require.ensure([], () => r(require('./components/Dashboard.vue')), '/aaa')
 const DashboardIndex = r => require.ensure([], () => r(require('./components/modules/dashboard/Index.vue')), '/aaa')
 const NotFound = r => require.ensure([], () => r(require('./components/modules/dashboard/404.vue')), '/aaa')
 const WidgetsIndex = r => require.ensure([], () => r(require('./components/modules/widgets/Index.vue')), '/aaa')
@@ -21,8 +21,16 @@ const UIIcons = r => require.ensure([], () => r(require('./components/modules/ui
 const UIModals = r => require.ensure([], () => r(require('./components/modules/ui/Modals.vue')), '/aaa')
 const UISliders = r => require.ensure([], () => r(require('./components/modules/ui/Sliders.vue')), '/aaa')
 const UITimeline = r => require.ensure([], () => r(require('./components/modules/ui/Timeline.vue')), '/aaa')
+
 const Product = r => require.ensure([], () => r(require('./components/modules/products/Product.vue')), '/product')
+const Productlotdetails = r => require.ensure([], () => r(require('./components/modules/products/Productlotdetails.vue')), '/productdt')
+const Addproduct = r => require.ensure([], () => r(require('./components/modules/products/Addproduct.vue')), '/addrcproduct')
+
+
+
 const Test = r => require.ensure([], () => r(require('./components/modules/test/Test.vue')), '/test')
+const Rating = r => require.ensure([], () => r(require('./components/modules/test/Rating.vue')), '/test')
+const Hello = r => require.ensure([], () => r(require('./components/Hello.vue')), '/test')
 
 // const Bar = r => require.ensure([], () => r(require('./Bar.vue')), 'group-foo')
 // const Baz = r => require.ensure([], () => r(require('./Baz.vue')), 'group-foo')
@@ -60,13 +68,25 @@ const routes = [
         name: 'dashboard',
         component: DashboardIndex
       }, {
-        path: '/product',
-        name: 'product',
+        path: '/rcproduct',
+        name: 'rcproduct',
         component: Product
+      }, {
+        path: '/productdetail/:lotid',
+        name: 'roductdetail',
+        component: Productlotdetails
+      }, {
+        path: '/addrcproduct',
+        name: 'addrcproduct',
+        component: Addproduct
       }, {
         path: '/test',
         name: 'test',
-        component: Test
+        component: Hello      
+      }, {
+        path: '/rating',
+        name: 'rating',
+        component: Rating
       }, {
         path: '/dashboard',
         name: 'dashboard',

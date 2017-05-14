@@ -8,12 +8,12 @@
             <img src="/static/img/user2-160x160.jpg" class="img-circle" alt="User Image">
           </div>
           <div class="pull-left info">
-            <p>Alexander Pierce</p>
-            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+            <p>{{userprofile.name}}</p>
+            <a href="#"><i class="fa fa-circle text-success"></i>Online</a>
           </div>
         </div>
         <!-- search form -->
-        <form action="#" method="get" class="sidebar-form">
+<!--         <form action="#" method="get" class="sidebar-form">
           <div class="input-group">
             <input type="text" name="q" class="form-control" placeholder="Search...">
             <span class="input-group-btn">
@@ -21,26 +21,41 @@
                 </button>
               </span>
           </div>
-        </form>
+        </form> -->
         <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
-          <li class="header">MAIN NAVIGATION</li>
+          <li class="header"><span style="font-size:20px;color:red;">{{branch.name}}</span></li>
           <li>
             <router-link to="/dashboard">
               <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             </router-link>
           </li>
           <li>
-            <router-link to="/product">
-              <i class="fa fa-cubes"></i> <span>Product</span>
+            <router-link to="/rcproduct">
+              <i class="fa fa-cubes"></i> <span>รายการรับซื้อ</span>
             </router-link>
           </li>
+<!--           <li>
+            <router-link to="/productdetail/LOT20170401">
+              <i class="fa fa-cubes"></i> <span>รายละเอียดสินค้าแต่ละ lot</span>
+            </router-link>
+          </li> -->
           <li>
+            <router-link to="/addrcproduct">
+              <i class="fa fa-cubes"></i> <span>รับซื้อผลไม้</span>
+            </router-link>
+          </li>
+<!--           <li>
             <router-link to="/test">
               <i class="fa fa-cubes"></i> <span>Test</span>
             </router-link>
           </li>
+ -->   <!--        <li>
+            <router-link to="/rating">
+              <i class="fa fa-cubes"></i> <span>Rating</span>
+            </router-link>
+          </li> -->
           <!--<li class="treeview">-->
             <!--<a href="#">-->
               <!--<i class="fa fa-files-o"></i>-->
@@ -57,14 +72,14 @@
                 <!--Sidebar</a></li>-->
             <!--</ul>-->
           <!--</li>-->
-          <li>
+<!--           <li>
             <router-link to="/widgets">
               <i class="fa fa-th"></i> <span>Widgets</span>
               <span class="pull-right-container">
                 <small class="label pull-right bg-green">Hot</small>
               </span>
             </router-link>
-          </li>
+          </li> -->
           <!--<li class="treeview">-->
             <!--<a href="#">-->
               <!--<i class="fa fa-pie-chart"></i>-->
@@ -80,7 +95,7 @@
               <!--<li><a href="../charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>-->
             <!--</ul>-->
           <!--</li>-->
-          <li class="treeview">
+<!--           <li class="treeview">
             <a href="#">
               <i class="fa fa-laptop"></i>
               <span>UI Elements</span>
@@ -108,7 +123,7 @@
                 <router-link to="/UI/modals"><i class="fa fa-circle-o"></i> Modals</router-link>
               </li>
             </ul>
-          </li>
+          </li> -->
           <!--<li class="treeview">-->
             <!--<a href="#">-->
               <!--<i class="fa fa-edit"></i> <span>Forms</span>-->
@@ -219,7 +234,18 @@
 </template>
 
 <script>
+  import { mapState, mapGetters, mapMutations, mapActions  } from 'vuex'
+  //...mapGetters([]),
+  //...mapMutations([]),
+  //...mapActions([]),
+  
   export default {
-    name: 'DashboardSidebar'
+    name: 'DashboardSidebar',
+    computed: {
+      branch: function(){
+        return this.$store.state.branch
+      },
+      ...mapState(['userprofile']),
+    }
   }
 </script>

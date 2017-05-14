@@ -1,196 +1,145 @@
 <template>
   <div class="content-wrapper">
+
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>Product<small>example</small></h1>
+      <h1>รายการรับซื้อ<small>ผลไม้ ตา่ง ๆ</small></h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">UI</a></li>
-        <li class="active">Product</li>
+        <li><a href="#">product</a></li>
+        <li class="active">rectivelist</li>
       </ol>
     </section>
 
     <!-- Main content -->
     <section class="content">
-
-      <!-- row -->
-      <div class="row">
-        <div class="col-md-12">
-          <!-- The time line -->
-          <ul class="timeline">
-            <!-- timeline time label -->
-            <li class="time-label">
-                  <span class="bg-red">
-                    10 Feb. 2014
-                  </span>
-            </li>
-            <!-- /.timeline-label -->
-            <!-- timeline item -->
-            <li>
-              <i class="fa fa-envelope bg-blue"></i>
-
-              <div class="timeline-item">
-                <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
-
-                <h3 class="timeline-header"><a href="#">Support Team</a> sent you an email</h3>
-
-                <div class="timeline-body">
-                  Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
-                  weebly ning heekya handango imeem plugg dopplr jibjab, movity
-                  jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
-                  quora plaxo ideeli hulu weebly balihoo...
-                </div>
-                <div class="timeline-footer">
-                  <a class="btn btn-primary btn-xs">Read more</a>
-                  <a class="btn btn-danger btn-xs">Delete</a>
-                </div>
-              </div>
-            </li>
-            <!-- END timeline item -->
-            <!-- timeline item -->
-            <li>
-              <i class="fa fa-user bg-aqua"></i>
-
-              <div class="timeline-item">
-                <span class="time"><i class="fa fa-clock-o"></i> 5 mins ago</span>
-
-                <h3 class="timeline-header no-border"><a href="#">Sarah Young</a> accepted your friend request</h3>
-              </div>
-            </li>
-            <!-- END timeline item -->
-            <!-- timeline item -->
-            <li>
-              <i class="fa fa-comments bg-yellow"></i>
-
-              <div class="timeline-item">
-                <span class="time"><i class="fa fa-clock-o"></i> 27 mins ago</span>
-
-                <h3 class="timeline-header"><a href="#">Jay White</a> commented on your post</h3>
-
-                <div class="timeline-body">
-                  Take me to your leader!
-                  Switzerland is small and neutral!
-                  We are more like Germany, ambitious and misunderstood!
-                </div>
-                <div class="timeline-footer">
-                  <a class="btn btn-warning btn-flat btn-xs">View comment</a>
-                </div>
-              </div>
-            </li>
-            <!-- END timeline item -->
-            <!-- timeline time label -->
-            <li class="time-label">
-                  <span class="bg-green">
-                    3 Jan. 2014
-                  </span>
-            </li>
-            <!-- /.timeline-label -->
-            <!-- timeline item -->
-            <li>
-              <i class="fa fa-camera bg-purple"></i>
-
-              <div class="timeline-item">
-                <span class="time"><i class="fa fa-clock-o"></i> 2 days ago</span>
-
-                <h3 class="timeline-header"><a href="#">Mina Lee</a> uploaded new photos</h3>
-
-                <div class="timeline-body">
-                  <img src="http://placehold.it/150x100" alt="..." class="margin">
-                  <img src="http://placehold.it/150x100" alt="..." class="margin">
-                  <img src="http://placehold.it/150x100" alt="..." class="margin">
-                  <img src="http://placehold.it/150x100" alt="..." class="margin">
-                </div>
-              </div>
-            </li>
-            <!-- END timeline item -->
-            <!-- timeline item -->
-            <li>
-              <i class="fa fa-video-camera bg-maroon"></i>
-
-              <div class="timeline-item">
-                <span class="time"><i class="fa fa-clock-o"></i> 5 days ago</span>
-
-                <h3 class="timeline-header"><a href="#">Mr. Doe</a> shared a video</h3>
-
-                <div class="timeline-body">
-                  <div class="embed-responsive embed-responsive-16by9">
-                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/tMWkeBIohBs" frameborder="0" allowfullscreen></iframe>
-                  </div>
-                </div>
-                <div class="timeline-footer">
-                  <a href="#" class="btn btn-xs bg-maroon">See comments</a>
-                </div>
-              </div>
-            </li>
-            <!-- END timeline item -->
-            <li>
-              <i class="fa fa-clock-o bg-gray"></i>
-            </li>
-          </ul>
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-
-      <div class="row" style="margin-top: 10px;">
-        <div class="col-md-12">
-          <div class="box box-primary">
+          <div class="box">
             <div class="box-header">
-              <h3 class="box-title"><i class="fa fa-code"></i> Timeline Markup</h3>
+              <h3 class="box-title">รายการรับซื้อ ผลไม้ ตาม Lot วันที่ </h3>
+              <button class="primary"style="float:right;width:90px" @click="addlot" type="button">เพิ่ม Lot/Bill</button>
             </div>
+            <!-- /.box-header -->
             <div class="box-body">
-                  <pre style="font-weight: 600;">
-&lt;ul class="timeline">
-
-    &lt;!-- timeline time label -->
-    &lt;li class="time-label">
-        &lt;span class="bg-red">
-            10 Feb. 2014
-        &lt;/span>
-    &lt;/li>
-    &lt;!-- /.timeline-label -->
-
-    &lt;!-- timeline item -->
-    &lt;li>
-        &lt;!-- timeline icon -->
-        &lt;i class="fa fa-envelope bg-blue">&lt;/i>
-        &lt;div class="timeline-item">
-            &lt;span class="time">&lt;i class="fa fa-clock-o">&lt;/i> 12:05&lt;/span>
-
-            &lt;h3 class="timeline-header">&lt;a href="#">Support Team&lt;/a> ...&lt;/h3>
-
-            &lt;div class="timeline-body">
-                ...
-                Content goes here
-            &lt;/div>
-
-            &lt;div class="timeline-footer">
-                &lt;a class="btn btn-primary btn-xs">...&lt;/a>
-            &lt;/div>
-        &lt;/div>
-    &lt;/li>
-    &lt;!-- END timeline item -->
-
-    ...
-
-&lt;/ul>
-                  </pre>
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>Lot Id</th>
+                  <th>ประเภท</th>
+                  <th>จำนวน (kg)</th>
+                  <th>จำนวนเงิน</th>
+                  <th>Avg/Kg</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="lot in lots">
+                  <td>
+                  <router-link v-bind:to="'/productdetail/' + lot.lot_name" class="button" >
+                  {{lot.lot_name}}</router-link>
+                  <!-- <a v-link="'/productdetail/' + lot.lot_name" >{{lot.lot_name}} </a> -->
+                  </td>
+                  <td>{{lot.name}}</td>
+                  <td>{{lot.qty}}</td>
+                  <td>{{lot.total}}</td>
+                  <td>{{lot.avg}}</td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                  <th>Lot Id</th>
+                  <th>ประเภท</th>
+                  <th>จำนวน (kg)</th>
+                  <th>Avg/Kg</th>
+                  <th>Action</th>
+                </tr>
+                </tfoot>
+              </table>
             </div>
             <!-- /.box-body -->
           </div>
-          <!-- /.box -->
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-
     </section>
     <!-- /.content -->
   </div>
 </template>
 
 <script>
+  import $ from 'jquery'
+  import 'datatables.net'
+  import 'datatables.net-bs'
+  import bootbox from 'bootbox'
+  import { mapState, mapGetters, mapMutations, mapActions  } from 'vuex'
+
   export default {
-    name: 'Product'
+    name: 'Product',
+    data(){
+      return { visible: false }
+    },
+    computed:{
+      ...mapState(['categories','lots']),
+
+      lottoday(){
+          let today = new Date();
+          let lot = 'LOT'+ today.toISOString().slice(0,10).replace(/-/g,"");
+          console.log('lottoday',lot)
+          return lot;
+      }
+    },
+    mounted () {
+      this.$nextTick(() => {
+        $('#example1').DataTable({
+        "order": [['id', "desc" ]]
+        })
+       })
+      console.log('xx products = ',this.lots);
+    },
+    methods:{
+       addlot() {
+        let nb = JSON.parse(JSON.stringify(this.$store.state.app.newbill))
+        nb.lotid= 0;
+        nb.lot_name =this.$store.state.lottoday
+        this.$store.dispatch('createnewbill',nb);
+        this.$router.push("/addrcproduct")      
+      }
+    }
   }
 </script> 
+
+<style scope>
+/* Using the bootstrap style, but overriding the font to not draw in
+   the Glyphicons Halflings font as an additional requirement for sorting icons.
+   An alternative to the solution active below is to use the jquery style
+   which uses images, but the color on the images does not match adminlte.
+@import url('/static/js/plugins/datatables/jquery.dataTables.min.css');
+*/
+@import url('/static/js/plugins/datatables/dataTables.bootstrap.css');
+
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_desc:after {
+  font-family: 'FontAwesome';
+}
+table.dataTable thead .sorting:after {
+  content: " \f0dc";
+}
+table.dataTable thead .sorting_asc:after {
+  content: " \f0dd";
+}
+table.dataTable thead .sorting_desc:after {
+  content: " \f0de";
+}
+
+ .txtinput {
+   width:100%;
+   height: 37px;
+   font-size: larger;
+   text-align: right;
+ }
+ .txtdesc {
+   width:100%;
+   height: 37px;
+   font-size: larger;
+ }
+
+ .fsize18 {
+   font-size: 16px;
+ }
+</style>

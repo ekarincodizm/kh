@@ -1,146 +1,52 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://gitter.im/vuejs/vue" target="_blank">Gitter Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-      <br>
-      <li><a href="http://vuejs-templates.github.io/webpack/" target="_blank">Docs for This Template</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
-      <Table height="200" :columns="columns1" :data="data2"></Table>
-      <Rate v-model="value"></Rate>
-      <Row>
-        <Col span="12">
-            <Date-picker type="date" placeholder="选择日期" style="width: 200px"></Date-picker>
-        </Col>
-        <Col span="12">
-            <Date-picker type="daterange" placement="bottom-end" placeholder="选择日期" style="width: 200px"></Date-picker>
-        </Col>
-    </Row>
-      <q-datetime
-      v-model="model"
-      type="datetime"
-      ></q-datetime>
+  <div class="content-wrapper">
 
-       <button class="btn btn-danger btn-lg"
-        @click="showTop = !showTop">
-        Click to toggle alert on top
-      </button>
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>รายการรับซื้อ<small>ผลไม้ ตา่ง ๆ</small></h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">product</a></li>
+        <li class="active">rectivelist</li>
+      </ol>
+    </section>
 
-      <alert v-model="showTop" placement="top" duration="3000" type="danger" width="400px" dismissable>
-        <span class="icon-info-circled alert-icon-float-left"></span>
-        <strong>Heads up!</strong>
-        <p>This alert needs your attention.</p>
-      </alert>
 
-      <el-button @click="visible = true">Button</el-button>
-      <el-dialog v-model="visible" title="Hello world">
-      <p>Try Element</p>
-      </el-dialog>
-  </div>
-</template>
+<el-button type="text" @click="dialogVisible = true">click to open the Dialog</el-button>
+
+<el-dialog
+  title="Tips"
+  :visible.sync="dialogVisible"
+  size="tiny"
+  :before-close="handleClose">
+  <span>This is a message</span>
+  <span slot="footer" class="dialog-footer">
+    <el-button @click="dialogVisible = false">Cancel</el-button>
+    <el-button type="primary" @click="dialogVisible = false">Confirm</el-button>
+  </span>
+</el-dialog>
+</div></template>
 
 <script>
-import { alert } from 'vue-strap'
-
-export default {
-  name: 'hello',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App',
-      visible: false,
-      showTop: true,
-      columns1:[
-                    {
-                        title: '姓名',
-                        key: 'name'
-                    },
-                    {
-                        title: '年龄',
-                        key: 'age'
-                    },
-                    {
-                        title: '地址',
-                        key: 'address'
-                    }
-                ],
-      data2: [
-                    {
-                        name: '王小明',
-                        age: 18,
-                        address: '北京市朝阳区芍药居'
-                    },
-                    {
-                        name: '张小刚',
-                        age: 25,
-                        address: '北京市海淀区西二旗'
-                    },
-                    {
-                        name: '李小红',
-                        age: 30,
-                        address: '上海市浦东新区世纪大道'
-                    },
-                    {
-                        name: '周小伟',
-                        age: 26,
-                        address: '深圳市南山区深南大道'
-                    },
-                    {
-                        name: '王小明',
-                        age: 18,
-                        address: '北京市朝阳区芍药居'
-                    },
-                    {
-                        name: '张小刚',
-                        age: 25,
-                        address: '北京市海淀区西二旗'
-                    },
-                    {
-                        name: '李小红',
-                        age: 30,
-                        address: '上海市浦东新区世纪大道'
-                    },
-                    {
-                        name: '周小伟',
-                        age: 26,
-                        address: '深圳市南山区深南大道'
-                    }
-                ]
+  import bootbox from 'bootbox'
+  export default {
+    data() {
+      return {
+        dialogVisible: false
+      };
+    },
+    methods: {
+      handleClose(done) {
+        this.$confirm('Are you sure to close this dialog?')
+          .then(_ => {
+            done();
+          })
+          .catch(_ => {});
+      }
+    },
+    mounted(){
+      // bootbox.confirm("This is the default confirm!", function(result){ console.log('This was logged in the callback: ' + result); });
+      window.bootbox = bootbox;
     }
-  },
-  components: {
-    alert
-  }
-}
+  };
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
-</style>
