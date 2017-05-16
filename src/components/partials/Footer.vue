@@ -1,5 +1,5 @@
 <template>
-  <footer class="main-footer">
+  <footer class="main-footer noprint">
     <div class="pull-right hidden-xs">
       <b>Version</b> 2.3.8
     </div>
@@ -13,4 +13,10 @@
   export default {
     name: 'DashboardFooter'
   }
+
 </script>
+<style type="text/css" scoped>
+  @media print {
+   .noprint { display: none }
+  }
+</style>

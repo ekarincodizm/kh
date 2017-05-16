@@ -42,6 +42,7 @@
     "plotly.js": "^1.24.2",
     "quasar-framework": "^0.13.6",
     "roboto-fontface": "^0.7.0",
+    "thai-baht-text": "^1.0.7",
     "url-loader": "^0.5.8",
     "vue": "^2.2.6",
     "vue-axios": "^2.0.1",

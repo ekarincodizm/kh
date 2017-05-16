@@ -12,8 +12,7 @@
         <li class="active">add Product</li>
       </ol>
     </section>
-    <section class="content">
-
+    <section class="content noprint">
       <div class="box">
         <div class="box-header with-border">
           <h3 class="box-title">รับซื้อผลไม้</h3>
@@ -24,116 +23,216 @@
             <button @click="newtdbill" type="button" class="btn btn-box-tool primary" style="width:150px;">New Today Bill</button>
 
             <button v-show="issave" @click="save" type="button" class="btn btn-success" style="width:90px;">
-             <i class="glyphicon glyphicon-floppy-save" ></i> 
-                Save
-            </button>
+             <i class="glyphicon glyphicon-floppy-save" ></i>&nbsp; Save</button>
+             <button @click="print" type="button" class="btn btn-success" style="width:90px;">
+               <i class="glyphicon glyphicon-print" ></i>&nbsp; Print</button>
 
-            <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-              <i class="fa fa-minus"></i></button>
-              <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-                <i class="fa fa-times"></i></button>
+               <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                <i class="fa fa-minus"></i></button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+                  <i class="fa fa-times"></i></button>
+                </div>
               </div>
-            </div>
-            <div class="box-body">
-              <div>
-                <span  class="fsize18">หมายเลย บิล:  &nbsp;&nbsp;  </span>
-                      <input class="fsize18"type="text" name="billid" 
-                          v-model="bill.id" > &nbsp;&nbsp;
-                <span  class="fsize18">หมายเลย LOT:  &nbsp;&nbsp;  </span>
-                      <span class="fsize18" >{{bill.lotid}} / </span>
-                      <input class="fsize18" type="text" name="lotid" v-model="bill.lot_name" > &nbsp;&nbsp;<br/>
-                <span class="fsize18" >ชื่อผู้ขาย: &nbsp;&nbsp; </span>
-                      <input v-on:keyup="watchchange" id="salename" ref="salename" class="fsize18" type="text" name="name" v-model="bill.name" autofocus> &nbsp;&nbsp;
-                <span  class="fsize18">ประเภท:&nbsp;&nbsp;  </span>
-                            <select v-on:change="watchchange"  v-model="bill.cate">
-                              <option selected value="-1">เลือกประเภท</option>
-                              <option v-for="cat in categories" v-bind:value="cat.id">{{cat.name}}</option>
-                          </select>
+              <div class="box-body">
+                <div>
+                  <span  class="fsize18">หมายเลย บิล:  &nbsp;&nbsp;  </span>
+                  <input class="fsize18"type="text" name="billid" 
+                  v-model="bill.id" > &nbsp;&nbsp;
+                  <span  class="fsize18">หมายเลย LOT:  &nbsp;&nbsp;  </span>
+                  <span class="fsize18" >{{bill.lotid}} / </span>
+                  <input class="fsize18" type="text" name="lotid" v-model="bill.lot_name" > &nbsp;&nbsp;<br/>
+                  <span class="fsize18" >ชื่อผู้ขาย: &nbsp;&nbsp; </span>
+                  <input v-on:change="watchchange" id="salename" ref="salename" class="fsize18" type="text" name="name" v-model="bill.name" autofocus> &nbsp;&nbsp;
+                  <span  class="fsize18">ประเภท:&nbsp;&nbsp;  </span>
+                  <select v-on:change="watchchange"  v-model="bill.cate">
+                    <option selected value="-1">เลือกประเภท</option>
+                    <option v-for="cat in categories" v-bind:value="cat.id">{{cat.name}}</option>
+                  </select>
 
-                &nbsp;&nbsp; &nbsp;&nbsp;
-                <span  class="fsize18">วันที่:&nbsp;&nbsp;  </span>
-                      <input v-on:keyup="watchchange"  class="fsize18" type="text" name="date"  v-model="bill.date" > &nbsp;&nbsp;
-              </div>
-              <div>
-                  <button @click="addproduct" type="button" class="primary" style="width:120px;float:right;margin-bottom: 10px">เพิ่มรายการผลไม้</button>
-                  </div>
-              <table id="productlist" class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                  <th>รายการ ผลไม้</th>
-                  <th style="text-align:right"> จำนวน (kg) </th>
-                  <th style="text-align:right"> ราคา / กิโลกรัม </th>
-                  <th style="text-align:right"> จำนวนเงิน </th>
-                  <th style="text-align:right"> Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr v-for="(detail,index) in bill.billdetails">
-                  <td style="width:30%;" >     
-                  <list-select :list="products"
-                     option-value="id"
-                     option-text="name"
-                     :selected-item="item"
-                     placeholder="select item"
-                     @select="onSelect"
-                     >
-                  </list-select>
+                  &nbsp;&nbsp; &nbsp;&nbsp;
+                  <span  class="fsize18">วันที่:&nbsp;&nbsp;  </span>
+                  <input v-on:change="watchchange"  class="fsize18" type="text" name="date"  v-model="bill.date" > &nbsp;&nbsp;
+                </div>
+                <div>
+                  <button @click="addproduct" type="button" class="primary" style="width:140px;float:right;margin-bottom: 10px">เพิ่มรายการผลไม้</button>
+                </div>
+                <table id="productlist" class="table table-bordered table-striped">
+                  <thead>
+                    <tr>
+                      <th>รายการ ผลไม้</th>
+                      <th style="text-align:right"> จำนวน (kg) </th>
+                      <th style="text-align:right"> ราคา / กิโลกรัม </th>
+                      <th style="text-align:right"> จำนวนเงิน </th>
+                      <th style="text-align:right"> Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="(detail,index) in bill.billdetails">
+                      <td style="width:30%;" >     
+                        <model-list-select
+                        v-bind:list="products"  
+                        option-value="id"
+                        tabindex = "(index*1)" 
+                        option-text="name"
+                        :custom-text="codeAndNameAndDesc"
+                        v-bind:model="bill.billdetails[index]"
+                        placeholder="select item"
+                        v-model="bill.billdetails[index].item"
+                        v-on:input="onSelect"  autofocus >
+                      </model-list-select>       
 
-                  <td style="width:20%;" align="right"><input v-on:dblclick="keytext(detail)" class="txtinput" type="number" v-on:keyup="watchchange"  v-model="detail.qty" /></td>
-                  <td style="width:20%;" align="right"><input v-on:keyup="watchchange"  class="txtinput" type="number" v-model="detail.price" /></td>
-                  <td style="width:20%;" align="right">{{detail.qty * detail.price}}</td>
-                  <td style="width:10%;" align="right">
-                     <button @click="delete_details(detail,index)" class="btn btn-danger btn-xs" >
-                     <span class="glyphicon glyphicon-trash"></span>
-                     </button>
-                  </td>
-                </tr>                
-                </tbody>
-                <tfoot>
-                <tr>
-                  <td><b>เฉลี่ย รวม </b></td>
-                  <th  style="text-align:right">{{sumtotal.qty}}</th>
-                  <th  style="text-align:right">-</th>
-                  <th  style="text-align:right">{{sumtotal.total}}</th>
-                  <th  style="text-align:right">&nbsp;</th>
-                </tr>
+                      <td style="width:20%;" align="right"><input tabindex = "(index*1)+1" v-on:dblclick="keytext(detail)" class="txtinput" type="number" v-on:change="watchchange"  v-model="detail.qty" /></td>
+                      <td style="width:20%;" align="right">
+                        <input tabindex = "(index*1)+2"  @keyup.tab="tabkey(index)"  v-on:change="watchchange"  class="txtinput" type="number" v-model="detail.price" /></td>
+                      <td style="width:20%;" align="right" tabindex = "-1" >{{detail.qty * detail.price}}</td>
+                      <td style="width:10%;" align="right" tabindex = "-1" >
+                       <button tabindex = "-1"  @click="delete_details(detail,index)" class="btn btn-danger btn-xs" >
+                         <span  tabindex = "-1" class="glyphicon glyphicon-trash"></span>
+                       </button>
+                     </td>
+                   </tr>                
+                 </tbody>
+                 <tfoot>
+                  <tr>
+                    <td><b>เฉลี่ย รวม </b></td>
+                    <th  style="text-align:right">{{sumtotal.qty}}</th>
+                    <th  style="text-align:right">-</th>
+                    <th  style="text-align:right">{{sumtotal.total}}</th>
+                    <th  style="text-align:right">&nbsp;</th>
+                  </tr>
                 </tfoot>
                 <tfoot><tr>
-                  <button @click="addproduct" type="button" class="primary" style="width:120px;float:left;margin:10px;">เพิ่มรายการผลไม้</button>
+                  <button @click="addproduct" type="button" class="primary" style="width:140px;float:left;margin:10px;">เพิ่มรายการผลไม้</button>
                 </tr></tfoot>
               </table>
-            <!-- /.box-body -->
+              <!-- /.box-body -->
             </div>  
             <!-- /.box-body -->
             <div class="box-footer">
-              Footer
+              Footer<!-- <pre>{{bill.billdetails}}</pre> -->
             </div>
           </div>index
         </section>
-      </div>
-    </template>
+    <section class="content printbox">
+        <table class="prntable" align="center"  valign="top" width="95%" >
+          <thead>
+              <tr class="customer noleftright">
+                <td colspan="5" valign="top" style="pading:0;">
+                <div>
+                  <table class="customertable" width="100%"  >
+                    <tr>
+                      <td colspan="5" style="text-align:center">
+                      <b>กุ่ยฮวด รับซื้อผลไม้</b><br/>
+                      <span>บิลเงินสด</span>
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <td width="60%" colspan="3">ชื่อ</td>
+                      <td>เลขที่บิล</td>
+                      <td>{{bill.id}}</td>
+                    </tr>
+                    
+                    <tr>
+                      <td width="60%" colspan="3">ที่อยู่</td>
+                      <td>วันที่</td>
+                      <td>{{bill.date}}</td>
+                    </tr>
+                    
+                    <tr>
+                      <td width="60%" colspan="5">&nbsp;</td>
+                    </tr>
+
+                  </table>
+                </div>
+                </td>
+              </tr>
+              <tr>
+                <th style="text-align:center;">No.</th>
+                <th style="text-align:center;">รายการ ผลไม้</th>
+                <th style="text-align:center;"> จำนวน (kg) </th>
+                <th style="text-align:center;"> ราคา / กิโลกรัม </th>
+                <th style="text-align:center;"> จำนวนเงิน </th>
+              </tr>
+          </thead>
+          <tbody>
+                <tr v-for="(detail,index) in bill.billdetails" >
+                  <td style="width:10%;padding-left:10px;border:1 solid" >{{index+1}}</td>    
+                  <td style="width:30%;padding-left:10px;border:1 solid" >{{detail.name}}</td>    
+                  <td style="width:20%;padding-right:5px;border:1 solid" align="right">{{detail.qty}}</td>
+                  <td style="width:20%;padding-right:5px;border:1 solid" align="right">{{detail.price}}</td>
+                  <td style="width:20%;padding-right:5px;border:1 solid" align="right">{{(detail.qty * detail.price).toLocaleString('th-TH', {minimumFractionDigits: 2})}}</td>
+                </tr> 
+                <tr v-for="(row,index) in whiterow" >
+                <td style="width:10%;padding-right:5px;border:1 solid" align="right">&nbsp;</td>
+                <td style="width:30%;padding-right:5px;border:1 solid" align="right">&nbsp;</td>
+                <td style="width:20%;padding-right:5px;border:1 solid" align="right">&nbsp;</td>
+                <td style="width:20%;padding-right:5px;border:1 solid" align="right">&nbsp;</td>
+                <td style="width:20%;padding-right:5px;border:1 solid" align="right">&nbsp;</td>
+                </tr>
+          </tbody>
+          <tfoot>
+            <tr class="noleftright"><td colspan="5" ></td></tr>
+            <tr>
+              <td colspan="3">&nbsp;**{{thaibaht}}**</td>
+              <td style="width:20%;padding-right:5px" align="right" >รวมเป็นเงิน</td>
+              <td style="width:20%;padding-right:5px" align="right" >{{sumtotal.total.toLocaleString('th-TH', {minimumFractionDigits: 2})}}</td>
+            </tr>
+            <tr class="notop"><td colspan="5" valign="middle">&nbsp;ผู้รับเงิน:</td></tr>
+          </tfoot>
+        </table>
+    </section>
+  </div>
+</template>
 
     <script>
       import bootbox from 'bootbox'
       import { mapState, mapActions  } from 'vuex'
-      import { ListSelect } from 'vue-search-select'
+      import ModelListSelect from '@/components/ModelListSelect.vue'
+      import ThaiBaht from 'thai-baht-text' 
 
       export default {
         name: 'Addproduct',
         data(){
           return {
+            codeAndNameAndDesc (item) {
+              return `${item.product_code} - ${item.name}`
+            },
             item: {
               id: '',
               name: '',
               category_id: ''
-            }
+            },
+            pageline: 18
           }
         },
         methods: {
               ...mapActions(['createnewbill']),
-              onSelect (item,a) {
-                console.log('----onSelect appproduct-----',item,a)
-                // this.item = item
+              tabkey(key){
+                console.log('----tab--key--adproduct-',key,this.bill.billdetails.length)
+                if((key+1)== this.bill.billdetails.length ){
+                  this.addproduct();
+                }
+              },
+              checkpagebreak(idx){
+                console.log('checkpagebreak',idx)
+                  if(idx < this.pageline ) {
+                    return false;
+                  } else {
+                    return idx/this.pageline == 0;
+                  }
+              },
+              onSelect(item,model,c,e){
+                console.log('----oninput-parent----',item,model,c,e)
+                 if(typeof item == 'undefined') {
+                    console.log('item no name1---',item);
+                 } else {
+                    console.log('item no name2---',item);
+                    model.name = item.name
+                 }
+                // item.name = model.name;
+                // model.qty = 1;
+                // model.price = item.price;
               },
               validate(){
                   let chk = true;
@@ -165,6 +264,11 @@
               },
               watchchange(){
                   console.log('----start watch change------')
+                  let ps = this.products.filter(item =>{ let t = item.category_id == this.bill.cate
+                    console.log('--filter---',item.category_id,t)
+                    return t;
+                     } )
+                  console.log('filter',ps,this.bill.cate)
                   // this.$store.state.app.watchchange = this.$store.watch(
                   // state=>JSON.stringify(state.bill),
                   // (a)=>{ 
@@ -173,6 +277,9 @@
                   //       console.log('------watch end --------')
                   //     }
                   // )
+              },
+              print(){
+                window.print();
               },
               save(){
                  if(this.validate()){
@@ -229,7 +336,7 @@
           },
           addproduct() {
             console.log('addproduct')
-            this.bill.billdetails.push({name:"",qtystr:"",qty:"0",price:"0",amount:"0"} )
+            this.bill.billdetails.push( {  id:'new',item:{   value: '', text: '' },name:"",qtystr:"",qty:"0",price:"0",amount:"0"} )
             this.bill.save = true;
             this.$store.state.addbillsave = this.bill.save;
             this.bill.isNew = false;
@@ -261,6 +368,7 @@
             });
           },
           delete_details(row,index) {
+            console.log('---delete--details==',row)
             if(row.name){
                 bootbox.confirm({
                   message: 'ต้องการที่จะลบรายการนี้หรือไม่ ?',
@@ -291,8 +399,25 @@
         },
         computed: {
           ...mapState(['bill','categories','products']),
+          whiterow(){
+            let row = 0;
+            if(this.bill.billdetails.length > this.pageline) {
+              row = this.pageline - (this.bill.billdetails.length%(this.pageline))+ 5 ;
+            } else {
+              row =this.pageline - this.bill.billdetails.length;
+            }
+            console.log('witherow==',this.bill.billdetails.length,'/',row)
+            return row;
+          },
+          thaibaht(){
+            return ThaiBaht(this.sumtotal.total) 
+          },
           productnames(){
             return this.products.map(p=>p.id+':'+p.name)
+          },
+          productlist(){
+           // return this.products.filter(item =>{ return item.category_id == this.bill.cate
+                     // } )
           },
           isshowcurrentlot(){
             if(this.$store.state.currentlot){
@@ -328,35 +453,125 @@
         mounted() {
         },
         components : {
-          ListSelect
+          ModelListSelect
         }
       };
     </script>
 
 <style lang="css" scoped>
+  * {
+    font-size:16px !important;
+   }
+
+ .content-wrapper {
+   height: 100%!important; 
+   overflow: -moz-scrollbars-vertical;
+   overflow-y: scroll;
+   overflow-x: hidden;
+ }
 
  .txtinput {
    width:100%;
    height: 37px;
-   font-size: larger;
+   /*font-size: larger;*/
+   /*font-size: 15px;*/
    text-align: right;
  }
  .txtdesc {
    width:100%;
    height: 37px;
-   font-size: larger;
+   /*font-size: larger;*/
  }
 
   .bootbox-input {
-    font-size: large;
+    /*font-size: large;*/
   }
   
  .fsize18 {
-   font-size: 16px;
+   /*font-size: 16px;*/
  }
 
  input {
-   font-size:20px  !important;
+   /*font-size:20px  !important;*/
  }
 
+tr {
+  height: 35px;
+}
+ .customer {
+    width: 100%;
+ }
+
+.customertable{
+  border: 0px solid;
+  border-color: white;
+}
+
+table.customertable tr,table.customertable td {
+  border-color: white;
+}
+
+.prntable td {
+  border:1px solid rgb(150, 150, 150);
+}
+
+.prntable th { 
+  border:1px solid rgb(150, 150, 150);
+}
+
+.notop {
+  height:80px;
+}
+
+b {
+  /*font-size:30px;*/
+}
+
+.printbox { display: none; }
+
+@page{
+  margin: 30 auto;
+}
+
+@media print {
+  * {
+    font-size:14px!important; 
+  }
+  body { 
+    overflow: hidden; 
+  }
+ .noprint { 
+    display: none 
+    }
+ .content-wrapper {
+    overflow: hidden;
+  }
+
+ .content {
+   height: 100%!important; 
+   overflow: hidden;
+ }
+
+ .printbox { 
+  margin: 30 auto;
+  display: block; 
+  height:3000px;
+  overflow: hidden;
+  }
+ 
+ .printbox table {
+   overflow: hidden;
+   width: 95%;
+   margin-left:20px;
+ }
+
+.pagebreak {
+    /*position: relative;*/
+    display: block;
+    top: 40pt;
+    page-break-after: always;
+    z-index: 0;
+}
+
+} 
 </style>

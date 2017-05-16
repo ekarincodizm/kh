@@ -27,23 +27,18 @@ const state = {
         lotid: "NEW",
         lot_name: "LOT20170401",
         date: '2017-04-01',
-        billdetails: [{
-            item:{
-              id: '',
-              name: '',
-              category_id: ''
-            },
+        billdetails: [
+            {
+            id:1,
+            item:{  value: '', text: '' },
             name: "ผมไม้A",
             qty: "100",
             qtystr: "50+50",
             price: "80",
             amount: "8000"
         }, {
-            item:{
-              id: '',
-              name: '',
-              category_id: ''
-            },
+            id:2,
+            item:{  value: '', text: '' },
             name: "ผมไม้B",
             qty: "200",
             qtystr: "45+55+70+30",
