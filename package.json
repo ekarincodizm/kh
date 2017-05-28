@@ -45,7 +45,7 @@
     "thai-baht-text": "^1.0.7",
     "url-loader": "^0.5.8",
     "vue": "^2.2.6",
-    "vue-axios": "^2.0.1",
+    "vue-axios": "^2.0.2",
     "vue-bulma-brace": "^0.1.0",
     "vue-bulma-breadcrumb": "^1.0.1",
     "vue-bulma-card": "^1.0.2",

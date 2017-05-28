@@ -20,31 +20,16 @@ const state = {
     lot: {},
     summaryall: {},
     summary: [],
+    
+    productcols: ['รหัสสินค้า','ชื่อสินค้า','ราคา','ประเภท','รายละเอียด'],
     bill: {
-        cate: 1,
-        name: "aaaa",
-        id: "-1",
-        lotid: "NEW",
-        lot_name: "LOT20170401",
-        date: '2017-04-01',
-        billdetails: [
-            {
-            id:1,
-            item:{  value: '', text: '' },
-            name: "ผมไม้A",
-            qty: "100",
-            qtystr: "50+50",
-            price: "80",
-            amount: "8000"
-        }, {
-            id:2,
-            item:{  value: '', text: '' },
-            name: "ผมไม้B",
-            qty: "200",
-            qtystr: "45+55+70+30",
-            price: "80",
-            amount: "16000"
-        }, ],
+        cate: "-1",
+        name: "",
+        id: "NEW",
+        lot_id: "NEW",
+        lot_name: "",
+        date: "",
+        billdetails: [],
         save: false
     },
     app: {
@@ -78,6 +63,15 @@ const mutations = {
         newbill (state, payload ) {  // playload obj or data 
             state.bill  = payload 
         },
+        insupbill (state, payload ) {  // playload obj or data 
+            state.bill  = payload 
+            console.log('billsave==bf',state.bill.save);
+            state.bill.save = false;
+            console.log('billsave==af',state.bill.save);
+            state.app.loading = false;
+            vm.$store.state.bill.save = false;
+            bootbox.alert({ message: 'บันทึกสำเร็จ' , size: 'small'});
+        },
         
 }
 
@@ -85,6 +79,7 @@ const actions = {
     async initdata({commit, state}) {
             state.app.loading = true;
             const initdata = await Api.init();
+            console.log('initaction----',initdata);
             commit('initdata', initdata.data.data)
         },
         async lotbyname({commit}, lotname) {
@@ -113,6 +108,21 @@ const actions = {
             let nb = Object.assign({},newbill)
             commit('newbill', nb)
         },
+        async insupbill({commit,dispatch}, billdata ) {
+            state.app.loading = true;
+            try {
+                const rs = await Api.insupbill(billdata)
+                console.log('return of insupbill data------',rs);
+                commit('lotbyname', rs.data.data.data)
+                commit('insupbill',rs.data.data.bill)
+                dispatch('initdata');
+            } catch (e) {
+                console.log('error', e);
+                state.app.loading = false;
+                bootbox.alert({ message: 'Error: ไม่สามารถ บันทึกได้ ' , size: 'small'});
+            }
+        },
+        
 }
 
 const getters = {

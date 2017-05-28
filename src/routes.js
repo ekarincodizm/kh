@@ -26,6 +26,11 @@ const Product = r => require.ensure([], () => r(require('./components/modules/pr
 const Productlotdetails = r => require.ensure([], () => r(require('./components/modules/products/Productlotdetails.vue')), '/productdt')
 const Addproduct = r => require.ensure([], () => r(require('./components/modules/products/Addproduct.vue')), '/addrcproduct')
 
+const ProductCrud = r => require.ensure([], () => r(require('./components/modules/system/Productcrud.vue')), '/crudproduct')
+const ProductCruds = r => require.ensure([], () => r(require('./components/modules/system/Productcruds.vue')), '/crudproduct')
+const ProductCrudadd = r => require.ensure([], () => r(require('./components/modules/system/Productcrudadd.vue')), '/crudproduct')
+const ProductCrudedit = r => require.ensure([], () => r(require('./components/modules/system/Productcrudedit.vue')), '/crudproduct')
+const ProductCrudview = r => require.ensure([], () => r(require('./components/modules/system/ProductCrudview.vue')), '/crudproduct')
 
 
 const Test = r => require.ensure([], () => r(require('./components/modules/test/Test.vue')), '/test')
@@ -79,6 +84,29 @@ const routes = [
         path: '/addrcproduct',
         name: 'addrcproduct',
         component: Addproduct
+     },{
+        path: '/system/product',
+        name: 'Produc',
+        component: ProductCrud,
+        children:[
+              {
+                path: 'list',
+                name: 'Products',
+                component: ProductCruds,
+              },{
+                path: 'add',
+                name: 'productadd',
+                component: ProductCrudadd
+              },{
+                path: 'edit/:id',
+                name: 'Productedit',
+                component: ProductCrudedit
+              },{
+                path: ':id',
+                name: 'Productview',
+                component: ProductCrudview
+              }
+        ]
       }, {
         path: '/test',
         name: 'test',

@@ -60,7 +60,8 @@
           username: this.credentials.username,
           password: this.credentials.password
         }
-
+        console.log('this http',this.$http);
+        console.log('axios',this);
         this.$http.get('/static/auth.json', credentials)
           .then(function (data) {
             var token = data.body.token

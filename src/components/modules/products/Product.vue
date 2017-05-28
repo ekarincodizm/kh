@@ -38,9 +38,9 @@
                   <!-- <a v-link="'/productdetail/' + lot.lot_name" >{{lot.lot_name}} </a> -->
                   </td>
                   <td>{{lot.name}}</td>
-                  <td>{{lot.qty}}</td>
-                  <td>{{lot.total}}</td>
-                  <td>{{lot.avg}}</td>
+                  <td>{{lot.qty.toLocaleString('th-TH', {minimumFractionDigits: 2})}}</td>
+                  <td>{{lot.total.toLocaleString('th-TH', {minimumFractionDigits: 2})}}</td>
+                  <td>{{lot.avg.toLocaleString('th-TH', {minimumFractionDigits: 2})}}</td>
                 </tr>
                 </tbody>
                 <tfoot>

@@ -1,12 +1,14 @@
 import Vue from 'vue'
-// import Resource from 'vue-resource'
 import VueRouter from 'vue-router'
 import bootbox from 'bootbox'
+import Resource from 'vue-resource'
+ 
+
+
 // import ElementUI from 'element-ui'
 // import Quasar, * as Everything from 'quasar-framework'
 // import iView from 'iview';
 import moment from 'moment'
-import axios from 'axios'
 import { mapActions  } from 'vuex'
 
 import 'quasar-framework/dist/quasar.mat.standalone.css'
@@ -31,8 +33,12 @@ import routes from './routes'
 import store from './store'
 
 // Resource logic
-// Vue.use(Resource)
-// Vue.http.options.emulateJSON = true
+Vue.use(Resource)
+Vue.http.options.emulateJSON = true
+
+// import axios from 'axios'
+// import VueAxios from 'vue-axios'
+// Vue.use(VueAxios, axios)
 
 Vue.use(VueRouter)
 
@@ -61,6 +67,8 @@ router.beforeEach((to, from, next) => {
     next('/login')
   } else if(from.name == "addrcproduct" && store.state.bill.save ){
     bootbox.confirm({
+        size: 'small',
+        title: '<div><img src="/static/assets/logo.png""" alt="Smiley face" width="60" height="32"><span>กุ่ยฮวด</span></div>',
         message: "ข้อมูลยังไม่ Save ต้องการ Save หรือไม่ ?",
         buttons: {
             confirm: {
@@ -119,8 +127,8 @@ window.vm = new Vue({
     this.initdata();
     this.$store.state.lottoday = this.lottoday(); 
     this.$store.state.app.newbill = {  
-            cate: -1, name: "",  id: "NEW", lotid:"0", lot_name: this.lottoday(), date: new Date().toISOString().slice(0,19).replace('T',' '),  
-            billdetails: [{ name: "", qty: "0",  qtystr: "", price: "0",  amount: "0"  }],
+            cate: -1, name: "", id: "NEW", lot_id:"0", lot_name: this.lottoday(), date: new Date().toISOString().slice(0,19).replace('T',' '),  
+            billdetails: [{  id:'NEW',item:{   value: '', text: '' }, name:"",qtystr:"",qty:"0",price:"0",amount:"0"}],
             save: false,
             isNew : true
        }

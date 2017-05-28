@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const URL = 'http://127.0.0.1:8000/services/';
-// const URL = '/services/';
+ const URL = 'http://127.0.0.1:8000/services/';
+ // const URL = '/services/';
 
 export default {
   init() {
@@ -35,5 +35,8 @@ export default {
   },
   delbillbyid(id){
   	return axios.post(URL+'BillService.php/delbillbyid/'+id);
+  },
+  insupbill(lotdata) {
+    return axios.post(URL+'BillService.php/insupbill',lotdata);
   },
 }

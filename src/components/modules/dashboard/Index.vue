@@ -51,7 +51,10 @@
 
 <style scope>
   .content-wrapper {
-    height: 550px;
+    /*height: 550px;*/
+    min-height:450px;
+    height: 100%!important;
   }
+  
 
 </style>

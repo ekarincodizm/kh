@@ -1,7 +1,7 @@
 <template>
     <aside class="main-sidebar">
       <!-- sidebar: style can be found in sidebar.less -->
-      <section class="sidebar">
+      <section class="sidebar" style="height:100%">
         <!-- Sidebar user panel -->
         <div class="user-panel">
           <div class="pull-left image">
@@ -36,43 +36,65 @@
               <i class="fa fa-cubes"></i> <span>รายการรับซื้อ</span>
             </router-link>
           </li>
+
+          <li>
+            <router-link to="#">
+              <i class="fa fa-cubes"></i> <span>ผลิตแปรรูป</span>
+            </router-link>
+          </li>
+          <li>
+            <router-link to="#">
+              <i class="fa fa-cubes"></i> <span>รายการขาย</span>
+            </router-link>
+          </li>
 <!--           <li>
             <router-link to="/productdetail/LOT20170401">
               <i class="fa fa-cubes"></i> <span>รายละเอียดสินค้าแต่ละ lot</span>
             </router-link>
           </li> -->
-          <li>
-            <router-link to="/addrcproduct">
-              <i class="fa fa-cubes"></i> <span>รับซื้อผลไม้</span>
-            </router-link>
+     <li class="treeview">
+            <a href="#">
+              <i class="fa fa-files-o"></i>
+              <span>Admin</span>
+              <span class="pull-right-container">
+              <span class="label label-primary pull-right"></span>
+            </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><router-link to="/system/product/list"><i class="fa fa-cubes"></i> <span>list products</span></router-link></li>
+            </ul>
           </li>
+
+
+
+
 <!--           <li>
             <router-link to="/test">
               <i class="fa fa-cubes"></i> <span>Test</span>
             </router-link>
           </li>
- -->   <!--        <li>
+ -->     <!--      <li>
             <router-link to="/rating">
               <i class="fa fa-cubes"></i> <span>Rating</span>
             </router-link>
           </li> -->
-          <!--<li class="treeview">-->
-            <!--<a href="#">-->
-              <!--<i class="fa fa-files-o"></i>-->
-              <!--<span>Layout Options</span>-->
-              <!--<span class="pull-right-container">-->
-              <!--<span class="label label-primary pull-right">4</span>-->
-            <!--</span>-->
-            <!--</a>-->
-            <!--<ul class="treeview-menu">-->
-              <!--<li><a href="../layout/top-nav.html"><i class="fa fa-circle-o"></i> Top Navigation</a></li>-->
-              <!--<li><a href="../layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>-->
-              <!--<li><a href="../layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>-->
-              <!--<li><a href="../layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed-->
-                <!--Sidebar</a></li>-->
-            <!--</ul>-->
-          <!--</li>-->
-<!--           <li>
+<!--           <li class="treeview">
+            <a href="#">
+              <i class="fa fa-files-o"></i>
+              <span>Layout Options</span>
+              <span class="pull-right-container">
+              <span class="label label-primary pull-right">4</span>
+            </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="../layout/top-nav.html"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
+              <li><a href="../layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>
+              <li><a href="../layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
+              <li><a href="../layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed
+                Sidebar</a></li>
+            </ul>
+          </li>
+ --><!--           <li>
             <router-link to="/widgets">
               <i class="fa fa-th"></i> <span>Widgets</span>
               <span class="pull-right-container">
@@ -249,3 +271,10 @@
     }
   }
 </script>
+
+<style scope>
+  .content,.main-sidebar,.sidebar {
+    min-height:450px;
+    height: 100%!important;
+  }
+</style>
