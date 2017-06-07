@@ -1,21 +1,18 @@
+import './lib/css'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import bootbox from 'bootbox'
 import Resource from 'vue-resource'
- 
-
-
-// import ElementUI from 'element-ui'
-// import Quasar, * as Everything from 'quasar-framework'
-// import iView from 'iview';
+import ElementUI from 'element-ui'
+import locale from 'element-ui/lib/locale/lang/en'
 import moment from 'moment'
 import { mapActions  } from 'vuex'
+Vue.use(ElementUI, { locale })
 
-import 'quasar-framework/dist/quasar.mat.standalone.css'
-import 'bootstrap/dist/css/bootstrap.css'
-// import 'element-ui/lib/theme-default/index.css'
-// import 'iview/dist/styles/iview.css';    // 使用 CSS
+// import iView from 'iview';
+// Vue.use(iView);
 
+// import Quasar, * as Everything from 'quasar-framework'
 // Vue.use(Quasar, {
 //   deps: {
 //     moment
@@ -23,29 +20,20 @@ import 'bootstrap/dist/css/bootstrap.css'
 //   components: Everything,
 //   directives: Everything
 // })
+// import {routes} from './router'
 
-// Vue.use(ElementUI)
-// Vue.use(iView);
+import axios from 'axios';
+Vue.prototype.$axios = axios;
+
 Vue.config.productionTip = false
-
-
-import routes from './routes'
+import routes from './router'
 import store from './store'
 
 // Resource logic
 Vue.use(Resource)
 Vue.http.options.emulateJSON = true
-
-// import axios from 'axios'
-// import VueAxios from 'vue-axios'
-// Vue.use(VueAxios, axios)
-
 Vue.use(VueRouter)
-
-// Import top level component
 import App from './App.vue'
-
-// Routing logic
 var router = new VueRouter({
   routes: routes,
   mode: 'history',
@@ -104,20 +92,25 @@ router.beforeEach((to, from, next) => {
 // }
 // ---- in methods () ----------
 // this.$eventBus.$emit('message', this.text);
+
+
 var EventBus = new Vue();
+
+EventBus.fontsize = function(multiplier) {
+  if (document.body.style.fontSize == "") {
+    document.body.style.fontSize = "1.0em";
+  }
+  document.body.style.fontSize = parseFloat(document.body.style.fontSize) + (multiplier * 0.2) + "em";
+}
+
 Object.defineProperties(Vue.prototype, {
-    $eventBus: {
+    $bus: {
         get: function () {
             return EventBus;
         }
     }
 });
 
-
-// Start out app!
-// eslint-disable-next-line no-new
-
- 
 window.vm = new Vue({
   el: '#app',
   router: router,
@@ -143,6 +136,7 @@ window.vm = new Vue({
     }
   }
 })
+
 
 require('bootstrap')
 require('admin-lte')

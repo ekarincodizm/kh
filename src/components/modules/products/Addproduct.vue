@@ -19,8 +19,8 @@
           <!-- <span>บิลใหม๋:{{bill.isNew}} /action {{isaction}} / บันทึก:{{bill.save}}</span> -->
           <div class="box-tools pull-right">
 
-           <!--  <button v-show="isshowcurrentlot"  @click="newbill" type="button" class="btn btn-box-tool primary" style="width:150px;">New Current Lot Bill</button>    -->         
-            <button @click="newtdbill" type="button" class="btn btn-box-tool primary" style="width:100px;">
+           <!--  <button v-show="isshowcurrentlot"  @click="newbill" type="button" class="btn btn-box-tool btn-primary" style="width:150px;">New Current Lot Bill</button>    -->         
+            <button @click="newtdbill" type="button" class="btn btn-box-tool btn-primary" style="width:100px;">
               <i class="glyphicon glyphicon-plus"></i>&nbsp;New</button>
 
             <button v-show="issave" @click="save" type="button" class="btn btn-success" style="width:90px;">
@@ -43,7 +43,23 @@
                   <span class="fsize18" ><b>{{bill.lot_id}} </b>/ </span>
                   <input class="fsize18" type="text" name="lotid" v-model="bill.lot_name" > &nbsp;&nbsp;<br/>
                   <span class="fsize18" >ชื่อผู้ขาย: &nbsp;&nbsp; </span>
-                  <input v-on:change="watchchange" id="salename" ref="salename" class="fsize18" type="text" name="name" v-model="bill.name" autofocus> &nbsp;&nbsp;
+                  <div style=" display: inline-flex;">  
+                        <model-list-select
+                          style="min-width:300px;"
+                          v-bind:list="products"  
+                          option-value="id"
+                          tabindex = "(index*1)" 
+                          option-text="name"
+                          :custom-text="codeAndNameAndDesc"
+                          placeholder="select item"
+                          v-model="bill.name"
+                          v-on:change="watchchange"
+                          v-on:input="(item)=>{onSelect(item,detail)}"  autofocus >
+                       </model-list-select>       
+                      <i class="btn btn-primary" style="height:35px;float:right" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="glyphicon glyphicon-plus"></span>
+                      </i>
+                      </div>
                   <span  class="fsize18">ประเภท:&nbsp;&nbsp;  </span>
                   <select v-on:change="cateselect" v-model="bill.cate">
                     <option selected value="-1">เลือกประเภท</option>
@@ -55,7 +71,7 @@
                   <input v-on:change="watchchange"  class="fsize18" type="text" name="date"  v-model="bill.date" > &nbsp;&nbsp;
                 </div>
                 <div>
-                  <button @click="addproduct" type="button" class="primary" style="width:120px;float:right;margin-bottom: 10px"><i class="glyphicon glyphicon-plus"></i>&nbsp;ผลไม้</button>
+                  <button @click="addproduct" type="button" class="btn btn-primary " style="width:120px;float:right;margin-bottom: 10px"><i class="glyphicon glyphicon-plus"></i>&nbsp;ผลไม้</button>
                 </div>
                 <table id="productlist" class="table table-bordered table-striped">
                   <thead>
@@ -69,8 +85,9 @@
                   </thead>
                   <tbody>
                     <tr v-for="(detail,index) in bill.billdetails">
-                      <td style="width:30%;" >     
+                      <td style="width:30%;" >   
                         <model-list-select
+                          style="min-width:300px;"
                           v-bind:list="products"  
                           option-value="id"
                           tabindex = "(index*1)" 
@@ -80,7 +97,7 @@
                           v-model="bill.billdetails[index].item"
                           v-on:input="(item)=>{onSelect(item,detail)}"  autofocus >
                        </model-list-select>       
-
+                      </td>
                       <td style="width:20%;" align="right"><input tabindex = "(index*1)+1" v-on:dblclick="keytext(detail)" class="txtinput" type="number" v-on:change="watchchange"  v-model="detail.qty" /></td>
                       <td style="width:20%;" align="right">
                         <input tabindex = "(index*1)+2"  @keyup.tab="tabkey(index)"  v-on:change="watchchange"  class="txtinput" type="number" v-model="detail.price" /></td>
@@ -102,7 +119,7 @@
                   </tr>
                 </tfoot>
                 <tfoot><tr>
-                  <button @click="addproduct" type="button" class="primary" style="width:120px;float:left;margin:10px;"><i class="glyphicon glyphicon-plus"></i>&nbsp;ผลไม้</button>
+                  <button @click="addproduct" type="button" class="btn btn-primary" style="width:120px;float:left;margin:10px;"><i class="glyphicon glyphicon-plus"></i>&nbsp;ผลไม้</button>
                 </tr></tfoot>
               </table>
               <!-- /.box-body -->
@@ -122,7 +139,7 @@
                   <table class="customertable" width="100%"  >
                     <tr>
                       <td colspan="5" style="text-align:center">
-                      <b>กุ่ยฮวด รับซื้อผลไม้</b><br/>
+                      <b class="noprint">กุ่ยฮวด รับซื้อผลไม้</b><br/>
                       <span>บิลเงินสด</span>
                       </td>
                     </tr>
@@ -465,6 +482,8 @@
       };
     </script>
 
+
+<!-- <style scoped src="./normalize.css"></style> -->
 <style lang="css" scoped>
   * {
     font-size:16px !important;
@@ -491,7 +510,7 @@
  }
 
   .bootbox-input {
-    /*font-size: large;*/
+    font-size: 18px!important;
   }
   
  .fsize18 {

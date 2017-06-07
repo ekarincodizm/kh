@@ -39,6 +39,7 @@
     "material-design-icons": "^3.0.1",
     "mdi": "^1.8.36",
     "moment": "^2.18.1",
+    "paper-css": "^0.3.0",
     "plotly.js": "^1.24.2",
     "quasar-framework": "^0.13.6",
     "roboto-fontface": "^0.7.0",

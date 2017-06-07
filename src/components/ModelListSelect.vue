@@ -1,7 +1,7 @@
 <script>
   /* wrap basic component */
   import ModelSelect from './ModelSelect.vue'
-  
+
   export default {
     render: function (createElement) {
       return createElement(ModelSelect, {
@@ -97,8 +97,8 @@
     }
   }
 </script>
-<style type="text/css" media="screen">
+<style type="text/css" scoped>
   * {
-    font-size:14px !important;
-   }  
+    font-size:16px !important;
+   }
 </style>
