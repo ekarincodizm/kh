@@ -28,7 +28,6 @@ Vue.use(ClientTable,{
   perPage: 10
 });
 
-
 Vue.config.productionTip = false
 import routes from './router'
 import store from './store'
@@ -39,7 +38,6 @@ Vue.http.options.emulateJSON = true
 Vue.use(VueRouter)
 
 import App from './App.vue'
-
 var router = new VueRouter({
   routes: routes,
   mode: 'history',
