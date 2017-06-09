@@ -6,7 +6,6 @@ import bootbox from 'bootbox'
 Vue.use(Vuex)
 
 const state = {
-    search:'',
     token: null,
     userprofile: {
         name: "admin",

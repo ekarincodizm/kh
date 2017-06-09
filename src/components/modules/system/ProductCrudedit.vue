@@ -19,10 +19,10 @@
                     </tbody>
                 </table>
                 <footer style="float:left;padding-left:20px;" >
-                    <router-link to="/system/product/add" class="xcrud-button xcrud-orange xcrud-action">Save &amp; New</router-link>
-                    <router-link to="#" class="xcrud-button xcrud-orange xcrud-action">Save &amp; Edit</router-link>
-                    <router-link to="/system/product/list" class="xcrud-button xcrud-orange xcrud-action">Save &amp; Return</router-link>
-                    <router-link to="/system/product/list" class="xcrud-button xcrud-orange xcrud-action">Return</router-link>
+                    <router-link to="/system/product/add" class="btn">Save &amp; New</router-link>
+                    <router-link to="#" class="btn">Save &amp; Edit</router-link>
+                    <router-link to="/system/product/list" class="btn">Save &amp; Return</router-link>
+                    <router-link to="/system/product/list" class="btn">Return</router-link>
                 </footer>
             </div>
         </div>

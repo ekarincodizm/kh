@@ -16,7 +16,7 @@
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">รายการรับซื้อ ผลไม้ ตาม Lot วันที่ </h3>
-              <button class="primary"style="float:right;width:90px" @click="addlot" type="button">เพิ่ม Lot/Bill</button>
+              <button class="btn btn-primary"style="float:right;width:90px" @click="addlot" type="button">เพิ่ม Lot/Bill</button>
             </div>
             <!-- /.box-header -->
             <div class="box-body">

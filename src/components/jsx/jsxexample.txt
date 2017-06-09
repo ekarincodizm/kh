@@ -1,0 +1,20 @@
+Vue.component('jsx-example', {
+  render (h) { // <-- h must be in scope
+    return <div id="foo"><h1 style="font-size:30px"><i><b>bar----Test------------</b></i></h1></div>
+  }
+})
+
+
+import edit from '../../jsx/Bar'
+import Ctvue from '../../jsx/CTitle.vue'
+import Ctjsx from '../../jsx/CTitle.js'
+
+components: {
+  edit,Ctvue,Ctjsx
+}
+
+<jsx-example/>
+<edit count="21" />
+<ctvue :level="1"><div>??vue</div></ctvue>
+<ctjsx :level="2"><div>??jsx</div></ctjsx>
+<ctjsx :level="2"><div>??jsx</div></ctjsx>

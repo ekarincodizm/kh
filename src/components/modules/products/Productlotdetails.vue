@@ -18,8 +18,8 @@
             <div class="box-header with-border">
               <div class="user-block noprint">
                 <h3 class="box-title noprint">รายละเอียด การรับสินค้า {{lot.id}}/{{ lot.lot_name }}</h3>
-                <button type="button" style="width:90px;float:right;" class="primary noprint" @click="addbill">Add Bill</button>
-                <button type="button" style="width:90px;float:right;margin-right:10px;" class="primary noprint" @click="print">Print</button>
+                <button type="button" style="width:90px;float:right;" class="btn btn-primary noprint" @click="addbill">Add Bill</button>
+                <button type="button" style="width:90px;float:right;margin-right:10px;" class="btn btn-primary noprint" @click="print">Print</button>
               </div>
               <div class="box-tools noprint">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>                </button>

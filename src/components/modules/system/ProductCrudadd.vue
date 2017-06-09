@@ -10,7 +10,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-show="canShow(index)" v-for="(value,key,index) in item">
+                        <tr v-show="canShow(index)" v-for="(value,key,index) in item" >
                             <td >{{key}}</td>
                             <td style="text-align:left;">
                                 <input class="xcrud-input" type="text" v-model="item[key]">
@@ -20,10 +20,10 @@
                 </table>
             </div>
             <footer style="float:left;padding-left:20px;">
-                <a  @click="savenew" class="xcrud-button xcrud-orange xcrud-action">Save &amp; New</a>
-                <router-link to="#" class="xcrud-button xcrud-orange xcrud-action">Save &amp; Edit</router-link>
-                <router-link to="/system/product/list" class="xcrud-button xcrud-orange xcrud-action">Save &amp; Return</router-link>
-                <router-link to="/system/product/list" class="xcrud-button xcrud-orange xcrud-action">Back</router-link>
+                <a  @click="savenew" class="btn btn-success">Save &amp; New</a>
+                <router-link to="#" class="btn btn-primary">Save &amp; Edit</router-link>
+                <router-link to="/system/product/list" class="btn btn-primary">Save &amp; Return</router-link>
+                <router-link to="/system/product/list" class="btn btn-primary">Back</router-link>
             </footer>
     </div>
     <br/>
@@ -70,7 +70,7 @@ export default {
             "actived":'',
             "description":'',
             }
-    }
+    },
   }
 };
 </script>
