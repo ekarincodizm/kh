@@ -83,6 +83,7 @@
     "vue-style-loader": "^2.0.5",
     "vue-tables-2": "^0.6.23",
     "vuejs-autocomplete": "^0.1.1",
+    "vuejs-paginate": "^0.9.1",
     "vuex": "^2.3.1",
     "vuex-router-sync": "^4.1.2",
     "wysiwyg.css": "0.0.2"

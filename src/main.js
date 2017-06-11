@@ -1,43 +1,21 @@
 import './lib/css'
+import './lib/plugin'
+// import './lib/utils'
+import EventBus from "@/lib/eventBus";
 import Vue from 'vue'
-import VueRouter from 'vue-router'
 import bootbox from 'bootbox'
-import Resource from 'vue-resource'
-import ElementUI from 'element-ui'
-import locale from 'element-ui/lib/locale/lang/en'
 import moment from 'moment'
+import VueRouter from 'vue-router'
 import { mapActions  } from 'vuex'
-Vue.use(ElementUI, { locale })
 
-// import iView from 'iview';
-// Vue.use(iView);
-
-// import Quasar, * as Everything from 'quasar-framework'
-// Vue.use(Quasar, {
-//   deps: {
-//     moment
-//   },
-//   components: Everything,
-//   directives: Everything
-// })
-// import {routes} from './router'
-
-import {ServerTable, ClientTable, Event} from 'vue-tables-2';
-
-Vue.use(ClientTable,{
-  perPage: 10
-});
-
-Vue.config.productionTip = false
 import routes from './router'
-import store from './store'
+import store from '@/vuex/store'
+import App from './App.vue'
 
-// Resource logic
-Vue.use(Resource)
 Vue.http.options.emulateJSON = true
+Vue.config.productionTip = false
 Vue.use(VueRouter)
 
-import App from './App.vue'
 var router = new VueRouter({
   routes: routes,
   mode: 'history',
@@ -91,22 +69,6 @@ router.beforeEach((to, from, next) => {
 })
 
 
-// created() {
-// this.$eventBus.$on('message', this.onReceive);
-// }
-// ---- in methods () ----------
-// this.$eventBus.$emit('message', this.text);
-
-
-var EventBus = new Vue();
-
-EventBus.fontsize = function(multiplier) {
-  if (document.body.style.fontSize == "") {
-    document.body.style.fontSize = "1.0em";
-  }
-  document.body.style.fontSize = parseFloat(document.body.style.fontSize) + (multiplier * 0.2) + "em";
-}
-
 Object.defineProperties(Vue.prototype, {
     $bus: {
         get: function () {
@@ -124,7 +86,7 @@ window.vm = new Vue({
     this.initdata();
     this.$store.state.lottoday = this.lottoday(); 
     this.$store.state.app.newbill = {  
-            cate: -1, name: "", id: "NEW", lot_id:"0", lot_name: this.lottoday(), date: new Date().toISOString().slice(0,19).replace('T',' '),  
+            cate: -1, supplier:{},supplier_id:-1,name: "", id: "NEW", lot_id:"0", lot_name: this.lottoday(), date: new Date().toISOString().slice(0,19).replace('T',' '),  
             billdetails: [{  id:'NEW',item:{   value: '', text: '' }, name:"",qtystr:"",qty:"0",price:"0",amount:"0"}],
             save: false,
             isNew : true
@@ -140,7 +102,6 @@ window.vm = new Vue({
     }
   }
 })
-
 
 require('bootstrap')
 require('admin-lte')

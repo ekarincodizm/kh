@@ -5,17 +5,17 @@
     <section class="content-header">
       <h1  >รายละเอียด Lot ที่: <small>{{$route.params.lotid}}</small></h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">product</a></li>
+        <li><router-link  :to="'/home'" class="button" ><i class="fa fa-dashboard"></i> Home</router-link></li>
+        <li><router-link  :to="'/rcproduct'" class="button" > Product lots</router-link></li>
         <li class="active">lotdetails</li>
       </ol>
     </section>
 
     <!-- Main content -->
-    <section style="min-height:450px;" class="content">
+    <section style="min-height:450px;" class="content print">
        <div v-if="chklot">
-          <div class="box box-widget">
-            <div class="box-header with-border">
+          <div class="box box-widget ">
+            <div class="box-header with-border noprint">
               <div class="user-block noprint">
                 <h3 class="box-title noprint">รายละเอียด การรับสินค้า {{lot.id}}/{{ lot.lot_name }}</h3>
                 <button type="button" style="width:90px;float:right;" class="btn btn-primary noprint" @click="addbill">Add Bill</button>
@@ -28,11 +28,11 @@
 
 
             <!-- /.box-header -->
-            <div class="box-body">
-              <table class="table table-bordered table-striped">
+            <div class="box-body print">
+              <table class="table table-bordered table-striped ">
                 <thead>
                 <tr>
-                  <th colspan="4" style="text-align:center;" class="print">
+                  <th colspan="4" style="text-align:center;" >
                     <span>รายละเอียด การรับสินค้า {{lot.id}} / {{ lot.lot_name }} Total: {{Number(lot.total).toLocaleString('th-TH', {minimumFractionDigits: 2})}} <b>฿</b> จำนวนบิล{{billength}} ใบ </span>
                   </th>
                 </tr>
@@ -250,45 +250,48 @@ import bootbox from 'bootbox'
   * {
     font-size:15px !important;
    }
-.content {
-  min-height:450px;
-  height: 100%!important;
-}
-/* Using the bootstrap style, but overriding the font to not draw in
-   the Glyphicons Halflings font as an additional requirement for sorting icons.
-   An alternative to the solution active below is to use the jquery style
-   which uses images, but the color on the images does not match adminlte.
-@import url('/static/js/plugins/datatables/jquery.dataTables.min.css');
-*/
-@import url('/static/js/plugins/datatables/dataTables.bootstrap.css');
 
-table.dataTable thead .sorting:after,
-table.dataTable thead .sorting_asc:after,
-table.dataTable thead .sorting_desc:after {
-  font-family: 'FontAwesome';
-}
-table.dataTable thead .sorting:after {
-  content: " \f0dc";
-}
-table.dataTable thead .sorting_asc:after {
-  content: " \f0dd";
-}
-table.dataTable thead .sorting_desc:after {
-  content: " \f0de";
-}
+  .content {
+    min-height:450px;
+    height: 100%!important;
+  }
+
 @page{
   margin: 30 auto;
 }
 
 @media print {
+
   * {
-    font-size:14px!important; 
+     font-size:14px!important; 
+      height: auto;
+    }
+
+    .noprint {
+       display: none;
+    }
+    
+ .print {
+    margin: 30 auto;
+    display: block; 
+    overflow: hidden;
+    height: auto;
   }
-  .noprint {
-    display: none;
+
+  .content-wrapper {
+    height: 100%!important; 
+    overflow: hidden;
   }
-  .print {
-    diskplay:block;
+
+  .wrapper {
+    overflow: hidden;
   }
+
+ .content {
+   height: 100%!important; 
+   overflow: hidden;
+   height: auto;
+ }
+  
 }
 </style>

@@ -1,5 +1,5 @@
 import Login from '@/components/Login.vue'
-import Dashboard from '@/components/Dashboard.vue'
+import Home from '@/components/Home.vue'
 // import DashboardIndex from '@/components/modules/dashboard/Index.vue'
 // import NotFound from '@/components/modules/dashboard/404.vue'
 // import WidgetsIndex from '@/components/modules/widgets/Index.vue'
@@ -52,7 +52,7 @@ const routes = [
     }
   }, {
     path: '/',
-    component: Dashboard,
+    component: Home,
     meta: { requiresAuth: true },
     beforeEnter: (to, from, next) => {
       document.body.className += ' skin-blue sidebar-mini'
@@ -67,7 +67,7 @@ const routes = [
     children: [
       {
         path: '',
-        redirect: '/dashboard'
+        redirect: '/home'
       }, {
         path: '/dashboard',
         name: 'dashboard',
@@ -110,15 +110,15 @@ const routes = [
       }, {
         path: '/test',
         name: 'test',
-        component: Hello      
+        component: Hello       
+      }, {
+        path: '/home',
+        name: 'test',
+        component: DashboardIndex      
       }, {
         path: '/rating',
         name: 'rating',
         component: Rating
-      }, {
-        path: '/dashboard',
-        name: 'dashboard',
-        component: DashboardIndex
       }, {
         path: '/widgets',
         name: 'widgets',

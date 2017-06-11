@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="wrapper">
+  <div id="appvue" class="wrapper" >
     <router-view></router-view>
   	<overay/>
   </div>

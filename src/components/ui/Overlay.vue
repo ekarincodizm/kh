@@ -41,8 +41,8 @@ export default {
         background-color: transparent;
         box-shadow: inset 0px 0px 0px 2px #fff;
         border-radius: 50%;
-        position: absolute;
-        top: 50%;
+        position: fixed;
+        top: 400px;
         left: 50%;
         margin-top: -50px;
         margin-left: -100px;
