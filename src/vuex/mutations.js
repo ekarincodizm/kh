@@ -12,13 +12,16 @@ export default {
         
         initdata(state, payload) { // playload obj or data 
             console.log('payload=', payload);
-            payload.branchs.unshift({id:-1,name:'----- All-----'});
+            
             state.branch = payload.branch;
-            state.branchs = payload.branchs;
-            state.categories = payload.categories;
             state.lots = payload.lots;
-            state.products = payload.products;
-            state.suppliers = payload.suppliers;
+
+            state.branchs.branchs = payload.branchs;
+            state.categories.categories = payload.categories;
+            state.products.products = payload.products;
+            state.suppliers.suppliers = payload.suppliers;
+            state.customers.customers = payload.customers;
+
             // state.summaryall = payload.summaryall;
             // state.summary = payload.summary;
             state.app.loading = false;
@@ -48,6 +51,15 @@ export default {
             state.summary  = payload.data.data.summary;
             state.summaryall  = payload.data.data.summaryall;
         },
-        
-        
+        lottoday(state){
+          let today = new Date();
+          let lot = 'LOT'+ today.toISOString().slice(0,10).replace(/-/g,"");
+          state.lottoday = lot;
+          state.app.newbill = {  
+                                cate: -1, supplier:{},supplier_id:-1,name: "", id: "NEW", lot_id:"0", lot_name: lot, date: new Date().toISOString().slice(0,19).replace('T',' '),  
+                                billdetails: [{  id:'NEW',item:{   value: '', text: '' }, name:"",qtystr:"",qty:"0",price:"0",amount:"0"}],
+                                save: false,
+                                isNew : true
+                              }
+        },
 }

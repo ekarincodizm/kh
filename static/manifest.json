@@ -1,0 +1,14 @@
+{
+  "lang": "en",
+  "background_color": "#ffffff",
+  "name": "Dev.Opera",
+  "short_name": "Dev.Opera",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "ms-icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    }
+  ]
+}

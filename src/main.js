@@ -1,6 +1,5 @@
 import './lib/css'
 import './lib/plugin'
-// import './lib/utils'
 import EventBus from "@/lib/eventBus";
 import Vue from 'vue'
 import bootbox from 'bootbox'
@@ -17,7 +16,10 @@ Vue.config.productionTip = false
 Vue.use(VueRouter)
 
 var router = new VueRouter({
-  routes: routes,
+  routes: routes.routes,
+  // linkActiveClass: 'is-active',
+  // scrollBehavior: () => ({ y: 0 }),
+  // mode: 'hash', // Demo is living in GitHub.io, so required!
   mode: 'history',
   scrollBehavior: function (to, from, savedPosition) {
     return savedPosition || { x: 0, y: 0 }
@@ -55,15 +57,19 @@ router.beforeEach((to, from, next) => {
               next(false) 
             } else {
               let nb= JSON.parse(JSON.stringify(store.state.app.newbill)) 
-              store.state.bill = nb;
-              console.log('route changenb=',nb,store.state.bill,store.state.bill==nb);
+              // store.state.bill = nb;
+              store.commit('newbill',nb);
+              // console.log('route changenb=',nb,store.state.bill,store.state.bill==nb);
               next()
             }
         }
     });
+    // ($('.sidebar-open') ?  $('.sidebar-toggle').click() : null )
   } else if ((store.state.token !== null) && to.path === '/login') {
-    next('/dashboard')
+    // ($('.sidebar-open') ?  $('.sidebar-toggle').click() : null )
+    next('/home')
   } else {
+    // ($('.sidebar-open') ?  $('.sidebar-toggle').click() : null )
     next()
   }
 })
@@ -84,22 +90,10 @@ window.vm = new Vue({
   render: h => h(App),
   created() {
     this.initdata();
-    this.$store.state.lottoday = this.lottoday(); 
-    this.$store.state.app.newbill = {  
-            cate: -1, supplier:{},supplier_id:-1,name: "", id: "NEW", lot_id:"0", lot_name: this.lottoday(), date: new Date().toISOString().slice(0,19).replace('T',' '),  
-            billdetails: [{  id:'NEW',item:{   value: '', text: '' }, name:"",qtystr:"",qty:"0",price:"0",amount:"0"}],
-            save: false,
-            isNew : true
-       }
+    this.$store.commit('lottoday');
   },
   methods:{
     ...mapActions(['initdata']),
-    lottoday(){
-          let today = new Date();
-          let lot = 'LOT'+ today.toISOString().slice(0,10).replace(/-/g,"");
-          console.log('lottoday',lot)
-          return lot;
-    }
   }
 })
 

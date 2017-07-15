@@ -1,0 +1,23 @@
+.input.is-danger, .textarea.is-danger {
+    border-color: #ff3860;
+}
+
+.help.is-danger {
+    color: #ff3860;
+}
+
+.help {
+    display: block;
+    font-size: 11px;
+    margin-top: 5px;
+}
+
+.has-error {
+    color: #a94442;
+}
+
+.has-success {
+ 	border-color: #3c763d;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}

@@ -1,13 +1,11 @@
 import Api  from '../api';
 const state = {
-  name: 'samplemodule',
+  name: 'products store',
+  products:[], 
 }
 
 const mutations = {
-  		sampletest(state, payload ) {
-  			console.log('mutation',state,payload)
-            state.name  = payload;
-        },
+
 }
 
 const actions = {
@@ -20,10 +18,8 @@ const actions = {
 }
 
 const getters = {
- 	getName(state, getters, rootState) {
- 	  // console.log('getter',state, getters, rootState)
-      return state.name;
-    }
+ 	getName(state, getters, rootState) {return state.name; },
+  products: state=>state.products,
 }
 export default {
   namespaced: true,

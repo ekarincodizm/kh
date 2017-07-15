@@ -1,0 +1,41 @@
+Vue.component('jsx-example', {
+  render (h) { // <-- h must be in scope
+    return <div id="foo" class={{ foo:this.chkchild()}} ><h1  style="font-size:30px"><i><b>bar----Test------------</b></i></h1></div>
+  }
+})
+
+
+import edit from '../../jsx/Bar'
+import Ctvue from '../../jsx/CTitle.vue'
+import Ctjsx from '../../jsx/CTitle.js'
+
+components: {
+  edit,Ctvue,Ctjsx
+}
+
+<jsx-example/>
+<edit count="21" />
+<ctvue :level="1"><div>??vue</div></ctvue>
+<ctjsx :level="2"><div>??jsx</div></ctjsx>
+<ctjsx :level="2"><div>??jsx</div></ctjsx>
+render (h) {
+  return (
+    <div
+      // normal attributes or component props.
+      id="foo"
+      // DOM properties are prefixed with `domProps`
+      domPropsInnerHTML="bar"
+      // event listeners are prefixed with `on` or `nativeOn`
+      onClick={this.clickHandler}
+      nativeOnClick={this.nativeClickHandler}
+      // other special top-level properties
+      class={{ foo: true, bar: false }}
+      style={{ color: 'red', fontSize: '14px' }}
+      key="key"
+      ref="ref"
+      // assign the `ref` is used on elements/components with v-for
+      refInFor
+      slot="slot">
+    </div>
+  )
+}

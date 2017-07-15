@@ -14,5 +14,6 @@ export default new Vuex.Store({
     actions,
     mutations,
     getters,
-    modules
+    modules,
+    // strict: process.env.NODE_ENV !== 'production'
 })

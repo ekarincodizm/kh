@@ -1,7 +1,14 @@
 <template>
   <div class="login-box">
     <div class="login-logo">
-      <router-link to="/"><b>Admin</b> LTE</router-link>
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <img src="../assets/logo.png" width="100px;height:25px">
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <b>รับซื้อผลไม้</b>
+          </div>
+        </div>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
@@ -72,7 +79,7 @@
               window.localStorage.setItem('token', token)
             }
 
-            this.$router.push('/dashboard')
+            this.$router.push('/home')
           },
           function (data) {
             this.error = data.body.message

@@ -9,247 +9,16 @@
           </div>
           <div class="pull-left info">
             <p>{{userprofile.name}}</p>
-            <a href="#"><i class="fa fa-circle text-success"></i>Online</a>
+            <a href="#">
+            <i v-if="userprofile.online" class="fa fa-circle text-success"></i>
+            <i v-else class="fa fa-circle text-danger"></i>
+            Online</a>
           </div>
         </div>
-        <!-- search form -->
-<!--         <form action="#" method="get" class="sidebar-form">
-          <div class="input-group">
-            <input type="text" name="q" class="form-control" placeholder="Search...">
-            <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
-          </div>
-        </form> -->
-        <!-- /.search form -->
-        <!-- sidebar menu: : style can be found in sidebar.less -->
-        <ul class="sidebar-menu">
+        <ul class="sidebar-menu" >
           <li class="header"><span style="font-size:20px;color:red;">{{branch.name}}</span></li>
-          <li>
-            <router-link to="/dashboard">
-              <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-            </router-link>
-          </li>
-          <li>
-            <router-link to="/rcproduct">
-              <i class="fa fa-cubes"></i> <span>รายการรับซื้อ</span>
-            </router-link>
-          </li>
-
-          <li>
-            <router-link to="#">
-              <i class="fa fa-cubes"></i> <span>ผลิตแปรรูป</span>
-            </router-link>
-          </li>
-          <li>
-            <router-link to="#">
-              <i class="fa fa-cubes"></i> <span>รายการขาย</span>
-            </router-link>
-          </li>
-<!--           <li>
-            <router-link to="/productdetail/LOT20170401">
-              <i class="fa fa-cubes"></i> <span>รายละเอียดสินค้าแต่ละ lot</span>
-            </router-link>
-          </li> -->
-     <li class="treeview">
-            <a href="#">
-              <i class="fa fa-files-o"></i>
-              <span>Admin</span>
-              <span class="pull-right-container">
-              <span class="label label-primary pull-right"></span>
-            </span>
-            </a>
-            <ul class="treeview-menu">
-                <li><router-link to="/system/product/list"><i class="fa fa-cubes"></i> <span>list products</span></router-link></li>
-            </ul>
-          </li>
-
-
-
-
-<!--           <li>
-            <router-link to="/test">
-              <i class="fa fa-cubes"></i> <span>Test</span>
-            </router-link>
-          </li>
- -->     <!--      <li>
-            <router-link to="/rating">
-              <i class="fa fa-cubes"></i> <span>Rating</span>
-            </router-link>
-          </li> -->
-<!--           <li class="treeview">
-            <a href="#">
-              <i class="fa fa-files-o"></i>
-              <span>Layout Options</span>
-              <span class="pull-right-container">
-              <span class="label label-primary pull-right">4</span>
-            </span>
-            </a>
-            <ul class="treeview-menu">
-              <li><a href="../layout/top-nav.html"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
-              <li><a href="../layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>
-              <li><a href="../layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
-              <li><a href="../layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed
-                Sidebar</a></li>
-            </ul>
-          </li>
- --><!--           <li>
-            <router-link to="/widgets">
-              <i class="fa fa-th"></i> <span>Widgets</span>
-              <span class="pull-right-container">
-                <small class="label pull-right bg-green">Hot</small>
-              </span>
-            </router-link>
-          </li> -->
-          <!--<li class="treeview">-->
-            <!--<a href="#">-->
-              <!--<i class="fa fa-pie-chart"></i>-->
-              <!--<span>Charts</span>-->
-              <!--<span class="pull-right-container">-->
-              <!--<i class="fa fa-angle-left pull-right"></i>-->
-            <!--</span>-->
-            <!--</a>-->
-            <!--<ul class="treeview-menu">-->
-              <!--<li><a href="../charts/chartjs.html"><i class="fa fa-circle-o"></i> ChartJS</a></li>-->
-              <!--<li><a href="../charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>-->
-              <!--<li><a href="../charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>-->
-              <!--<li><a href="../charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>-->
-            <!--</ul>-->
-          <!--</li>-->
-<!--           <li class="treeview">
-            <a href="#">
-              <i class="fa fa-laptop"></i>
-              <span>UI Elements</span>
-              <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-            </a>
-            <ul class="treeview-menu">
-              <li>
-                <router-link to="/UI/general"><i class="fa fa-circle-o"></i> General</router-link>
-              </li>
-              <li>
-                <router-link to="/UI/icons"><i class="fa fa-circle-o"></i> Icons</router-link>
-              </li>
-              <li>
-                <router-link to="/UI/buttons"><i class="fa fa-circle-o"></i> Buttons</router-link>
-              </li>
-              <li>
-                <router-link to="/UI/sliders"><i class="fa fa-circle-o"></i> Sliders</router-link>
-              </li>
-              <li>
-                <router-link to="/UI/timeline"><i class="fa fa-circle-o"></i> Timeline</router-link>
-              </li>
-              <li>
-                <router-link to="/UI/modals"><i class="fa fa-circle-o"></i> Modals</router-link>
-              </li>
-            </ul>
-          </li> -->
-          <!--<li class="treeview">-->
-            <!--<a href="#">-->
-              <!--<i class="fa fa-edit"></i> <span>Forms</span>-->
-              <!--<span class="pull-right-container">-->
-              <!--<i class="fa fa-angle-left pull-right"></i>-->
-            <!--</span>-->
-            <!--</a>-->
-            <!--<ul class="treeview-menu">-->
-              <!--<li><a href="../forms/general.html"><i class="fa fa-circle-o"></i> General Elements</a></li>-->
-              <!--<li><a href="../forms/advanced.html"><i class="fa fa-circle-o"></i> Advanced Elements</a>-->
-              <!--</li>-->
-              <!--<li><a href="../forms/editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>-->
-            <!--</ul>-->
-          <!--</li>-->
-          <!--<li class="treeview">-->
-            <!--<a href="#">-->
-              <!--<i class="fa fa-table"></i> <span>Tables</span>-->
-              <!--<span class="pull-right-container">-->
-              <!--<i class="fa fa-angle-left pull-right"></i>-->
-            <!--</span>-->
-            <!--</a>-->
-            <!--<ul class="treeview-menu">-->
-              <!--<li><a href="../tables/simple.html"><i class="fa fa-circle-o"></i> Simple tables</a></li>-->
-              <!--<li><a href="../tables/data.html"><i class="fa fa-circle-o"></i> Data tables</a></li>-->
-            <!--</ul>-->
-          <!--</li>-->
-          <!--<li>-->
-            <!--<a href="../calendar.html">-->
-              <!--<i class="fa fa-calendar"></i> <span>Calendar</span>-->
-              <!--<span class="pull-right-container">-->
-              <!--<small class="label pull-right bg-red">3</small>-->
-              <!--<small class="label pull-right bg-blue">17</small>-->
-            <!--</span>-->
-            <!--</a>-->
-          <!--</li>-->
-          <!--<li>-->
-            <!--<a href="../mailbox/mailbox.html">-->
-              <!--<i class="fa fa-envelope"></i> <span>Mailbox</span>-->
-              <!--<span class="pull-right-container">-->
-              <!--<small class="label pull-right bg-yellow">12</small>-->
-              <!--<small class="label pull-right bg-green">16</small>-->
-              <!--<small class="label pull-right bg-red">5</small>-->
-            <!--</span>-->
-            <!--</a>-->
-          <!--</li>-->
-          <!--<li class="treeview">-->
-            <!--<a href="#">-->
-              <!--<i class="fa fa-folder"></i> <span>Examples</span>-->
-              <!--<span class="pull-right-container">-->
-              <!--<i class="fa fa-angle-left pull-right"></i>-->
-            <!--</span>-->
-            <!--</a>-->
-            <!--<ul class="treeview-menu">-->
-              <!--<li><a href="invoice.html"><i class="fa fa-circle-o"></i> Invoice</a></li>-->
-              <!--<li><a href="profile.html"><i class="fa fa-circle-o"></i> Profile</a></li>-->
-              <!--<li><a href="login.html"><i class="fa fa-circle-o"></i> Login</a></li>-->
-              <!--<li><a href="register.html"><i class="fa fa-circle-o"></i> Register</a></li>-->
-              <!--<li><a href="lockscreen.html"><i class="fa fa-circle-o"></i> Lockscreen</a></li>-->
-              <!--<li><a href="404.html"><i class="fa fa-circle-o"></i> 404 Error</a></li>-->
-              <!--<li><a href="500.html"><i class="fa fa-circle-o"></i> 500 Error</a></li>-->
-              <!--<li class="active"><a href="blank.html"><i class="fa fa-circle-o"></i> Blank Page</a></li>-->
-              <!--<li><a href="pace.html"><i class="fa fa-circle-o"></i> Pace Page</a></li>-->
-            <!--</ul>-->
-          <!--</li>-->
-          <!--<li class="treeview">-->
-            <!--<a href="#">-->
-              <!--<i class="fa fa-share"></i> <span>Multilevel</span>-->
-              <!--<span class="pull-right-container">-->
-              <!--<i class="fa fa-angle-left pull-right"></i>-->
-            <!--</span>-->
-            <!--</a>-->
-            <!--<ul class="treeview-menu">-->
-              <!--<li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>-->
-              <!--<li>-->
-                <!--<a href="#"><i class="fa fa-circle-o"></i> Level One-->
-                  <!--<span class="pull-right-container">-->
-                  <!--<i class="fa fa-angle-left pull-right"></i>-->
-                <!--</span>-->
-                <!--</a>-->
-                <!--<ul class="treeview-menu">-->
-                  <!--<li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>-->
-                  <!--<li>-->
-                    <!--<a href="#"><i class="fa fa-circle-o"></i> Level Two-->
-                      <!--<span class="pull-right-container">-->
-                      <!--<i class="fa fa-angle-left pull-right"></i>-->
-                    <!--</span>-->
-                    <!--</a>-->
-                    <!--<ul class="treeview-menu">-->
-                      <!--<li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>-->
-                      <!--<li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>-->
-                    <!--</ul>-->
-                  <!--</li>-->
-                <!--</ul>-->
-              <!--</li>-->
-              <!--<li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>-->
-            <!--</ul>-->
-          <!--</li>-->
-          <!--<li><a href="../../documentation/index.html"><i class="fa fa-book"></i>-->
-            <!--<span>Documentation</span></a></li>-->
-          <!--<li class="header">LABELS</li>-->
-          <!--<li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>-->
-          <!--<li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>-->
-          <!--<li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>-->
-        </ul>
+          <sideitem v-for="item in sidebaritems" v-bind:item="item" :key="item.id" ></sideitem>
+      </ul>
       </section>
       <!-- /.sidebar -->
     </aside>
@@ -257,24 +26,69 @@
 
 <script>
   import { mapState, mapGetters, mapMutations, mapActions  } from 'vuex'
+  import sideitem from './sideitem'
   //...mapGetters([]),
   //...mapMutations([]),
   //...mapActions([]),
-  
+  // เป้าหมาของ dashboard คือ อยากรู้ว่า ซื้อชนิดใด มาปริมาณเท่าไร ยอดซื้อรวมแต่ละชนิดเท่าไร เฉลี่ยรวมเท่าไร
   export default {
     name: 'DashboardSidebar',
+    data(){
+      return  {
+        sidebaritems:[
+          { id:1, icon: 'fa fa-dashboard', badge: '',  name: 'รายงาน', to: '/home'},
+          { id:1, icon: 'fa fa-cubes', badge: '',  name: 'รายการรับซื้อ', to: '/rcproduct'},
+          { id:1, icon: 'fa fa-cubes', badge: '',  name: 'รายการมัดจำ', to: '/depositpayments'},
+          { id:2,icon: 'fa fa-files-o', badge: '',  name: 'Admin', to: '/system',
+            children:[
+              { id:3, icon: 'fa fa-pie-chart', badge: '',  name: 'Products',      to: '/system/crud/product'},
+              { id:3, icon: 'fa fa-pie-chart', badge: '',  name: 'Expenses',      to: '/system/crud/expenses'},
+              { id:5, icon: 'fglyphicon glyphicon-folder-open', badge: '',  name: 'Suppliers',     to: '/system/crud/supplier'},
+              { id:4, icon: 'glyphicon glyphicon-star-empty', badge: '',  name: 'Customers',     to: '/system/crud/customers'},
+              { id:6, icon: 'glyphicon glyphicon-stats', badge: '',  name: 'Categories',    to: '/system/crud/categories'},
+              { id:6, icon: 'glyphicon glyphicon-tasks', badge: '',  name: 'Branch',        to: '/system/crud/branch'},
+            ]
+          },
+        ],
+      }
+    },
     computed: {
-      branch: function(){
-        return this.$store.state.branch
-      },
-      ...mapState(['userprofile']),
+      // branch: function(){
+      //   return this.$store.state.branch
+      // },
+      ...mapState(['userprofile','branch']),
+    },
+    methods: {
+    },
+    components: {
+      sideitem
     }
   }
 </script>
 
 <style scope>
   .content,.main-sidebar,.sidebar {
-    min-height:450px;
+    min-height:550px;
     height: 100%!important;
   }
+
+.main-sidebar {
+    overflow-x: scroll;
+}
+
+.router-link-active {
+  background-color: #3c8dbc; 
+  color: white;
+}
+
+
+
+
+/*.sidebar-menu>li:hover>a{
+    background: #505152; 
+}
+*/
+/*li {
+  height:40px;
+}*/
 </style>

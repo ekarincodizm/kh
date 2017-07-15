@@ -3,7 +3,7 @@
 
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1  >รายละเอียด Lot ที่: <small>{{$route.params.lotid}}</small></h1>
+      <h1>วันที่: {{lot.date}} / รายละเอียด Lot ที่: <small>{{$route.params.lotid}}</small> </h1>
       <ol class="breadcrumb">
         <li><router-link  :to="'/home'" class="button" ><i class="fa fa-dashboard"></i> Home</router-link></li>
         <li><router-link  :to="'/rcproduct'" class="button" > Product lots</router-link></li>
@@ -16,13 +16,10 @@
        <div v-if="chklot">
           <div class="box box-widget ">
             <div class="box-header with-border noprint">
-              <div class="user-block noprint">
-                <h3 class="box-title noprint">รายละเอียด การรับสินค้า {{lot.id}}/{{ lot.lot_name }}</h3>
+              <div class="user-block noprint" style="margin-right: 5px;">
+                <h3 class="box-title noprint">รายละเอียด การรับสินค้า  lotid : {{lot.id}} / {{ lot.lot_name }}</h3>
                 <button type="button" style="width:90px;float:right;" class="btn btn-primary noprint" @click="addbill">Add Bill</button>
                 <button type="button" style="width:90px;float:right;margin-right:10px;" class="btn btn-primary noprint" @click="print">Print</button>
-              </div>
-              <div class="box-tools noprint">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>                </button>
               </div>
             </div>
 

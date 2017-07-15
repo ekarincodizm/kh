@@ -1,19 +1,21 @@
+import pkg from 'package'
 export default {
-	
+	pkg,
     search:'',
     token: null,
     userprofile: {
         name: "admin",
-        branchid: 1
+        branchid: 1,
+        online:true,
     },
     branch: {},
     categories: [],
     lots: [],
     lottoday: '',
     currentlot: '',
-    products: [],
-    branchs:[],
-    suppliers:[],
+    // products: [],
+    // branchs:[],
+    // suppliers:[],
     lot: {},
     summaryall: {},
     summary: [],

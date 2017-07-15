@@ -17,12 +17,17 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-            <el-switch
-              v-model="notshow"
-              on-text=""
-              off-text="">
-            </el-switch>
-             <el-table v-if="notshow"
+            <div>
+                <el-switch
+                  v-model="notshow" 
+                  on-text=""
+                  off-text="">
+                </el-switch>
+                <span v-if="notshow">แสดงเป็นแถว</span>
+                <span v-else>แสดงทั้งหมด</span>
+            </div>
+
+            <el-table v-if="notshow"
                 :data="showdata"
                 style="width: 100%">
                 <el-table-column type="expand">
@@ -54,8 +59,15 @@
                      <!-- <b>{{props.row.summary}}</b> -->
                   </template>
                 </el-table-column>
-
                 
+                <el-table-column
+                  label="Date"
+                  prop="date">
+                  <template scope="scope">
+                    {{scope.row.date.substr(0,10)}}
+                  </template>
+                </el-table-column>
+
                 <el-table-column
                   label="Name"
                    prop="lot_name"
@@ -81,14 +93,14 @@
                   label=""
                    prop="">
                 </el-table-column>
+             </el-table>
 
 
-              </el-table>
-
-              <table  v-if="!notshow" id="example1" class="table table-bordered table-striped">
+             <table  v-if="!notshow" id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Lot Id</th>
+                  <th width="140px">วันที่</th>
+                  <th width="300px">Lot Id</th>
                   <th>ประเภท</th>
                   <th>จำนวน (kg)</th>
                   <th>จำนวนเงิน</th>
@@ -97,16 +109,16 @@
                 </thead>
                 <tbody v-for="(lot, index) in showdata">
                  <tr style="background-color:#a9a9dc;" >
+                  <td>{{lot.lot_name.substr(3).replace(/(\d{4})(\d{2})(\d{2})/g,'$1/$2/$3')}}</td>
                   <td  width="100px">
                   <router-link style="color:white;font-size:xx-large" v-bind:to="'/productdetail/' + lot.lot_name" class="button" >
                   {{lot.lot_name}}</router-link>
                   <!-- <a v-link="'/productdetail/' + lot.lot_name" >{{lot.lot_name}} </a> -->
                   </td>
-                  <td>All</td>
+                  <td>&nbsp;</td>
                   <td>{{$bus.renderNumber(lot.qty)}}</td>
                   <td>{{$bus.renderNumber(lot.total)}}</td>
                   <td>{{$bus.renderNumber(lot.avg)}}</td>
-                  <td style="cursor:pointer" @click="visible=!visible"><i class="glyphicon glyphicon-eye-open"></i></td>
                 </tr>
                  <tr v-show="visible" v-for="summ in lot.summary" >
                   <td style="background-color:#e4e8e7">เกรดผลไม้</td>
@@ -114,7 +126,6 @@
                   <td>{{$bus.renderNumber(summ.qty)}}</td>
                   <td>{{$bus.renderNumber(summ.total)}}</td>
                   <td>{{$bus.renderNumber(summ.avg)}}</td>
-                  <td></td>
                 </tr>
                 <tr v-show="visible" v-for="sumcat in lot.sumbycat" >
                   <td style="background-color:#f9d9d9">ประเภทผลไม้</td>
@@ -162,7 +173,7 @@
     data(){
       return { 
         rows:[],
-        visible: false,
+        visible: true,
         notshow:true,
         page:1,
         perpage:10,
@@ -182,6 +193,7 @@
       showdata(){
        let skip = (this.page-1)*this.perpage;
        let take = skip+this.perpage;
+       console.log('lots=',this.lots)
        return this.lots.slice(skip,take);
       },
     },
